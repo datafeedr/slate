@@ -5,7 +5,7 @@ title: API Reference
 //   - php: PHP
 
 toc_footers:
-  - <a href='http://www.datafeedr.com/pricing' target='_blank'>Sign Up for an API Key</a>
+  - <a href='http://www.datafeedr.com/pricing' target='_blank'>Sign Up for a Datafeedr API Key</a>
   - <a href='https://github.com/lord/slate' target='_blank'>Documentation Powered by Slate</a>
 
 includes:

@@ -1,12 +1,24 @@
 ---
 title: API Reference
 
+<<<<<<< HEAD
 // language_tabs:
 //   - php: PHP
 
 toc_footers:
   - <a href='http://www.datafeedr.com/pricing' target='_blank'>Sign Up for a Datafeedr API Key</a>
   - <a href='https://github.com/lord/slate' target='_blank'>Documentation Powered by Slate</a>
+=======
+language_tabs: # must be one of https://git.io/vQNgJ
+  - shell
+  - ruby
+  - python
+  - javascript
+
+toc_footers:
+  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+>>>>>>> master(lord)
 
 includes:
   - errors
@@ -20,7 +32,11 @@ The Datafeedr API enables you to directly query our database of 100s of millions
 
 Currently, the API only supports [JSON](http://en.wikipedia.org/wiki/JSON) as a request and response format.
 
+<<<<<<< HEAD
 We currently have one PHP API client library. It can be downloaded [here](https://apidocs.datafeedr.com/php/datafeedr.zip).
+=======
+This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+>>>>>>> master(lord)
 
 All code examples (in the right column) are written for the PHP API client library.
 	
@@ -171,4 +187,54 @@ This endpoint retrieves a specific kitten.
 Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to retrieve
+
+## Delete a Specific Kitten
+
+```ruby
+require 'kittn'
+
+api = Kittn::APIClient.authorize!('meowmeowmeow')
+api.kittens.delete(2)
+```
+
+```python
+import kittn
+
+api = kittn.authorize('meowmeowmeow')
+api.kittens.delete(2)
+```
+
+```shell
+curl "http://example.com/api/kittens/2"
+  -X DELETE
+  -H "Authorization: meowmeowmeow"
+```
+
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('meowmeowmeow');
+let max = api.kittens.delete(2);
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 2,
+  "deleted" : ":("
+}
+```
+
+This endpoint deletes a specific kitten.
+
+### HTTP Request
+
+`DELETE http://example.com/kittens/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the kitten to delete
 

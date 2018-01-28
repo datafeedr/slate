@@ -33,7 +33,7 @@ All code examples (in the right column) are written for the PHP API client libra
 require( 'path/to/php/api/client/library/datafeedr.php' );
 
 // Initialize API Connection.
-$access_id  = 'QadowZjaABR7Z44PmXKn8NsXA';
+$access_id  = '';
 $secret_key = 'wnQFCbYtoAvLpZqmXvbPmTWePTXZdW4BdfojXbmQMwirC2i8yfMoUf6jcQZWZEcz';
 $api        = new DatafeedrApi( $access_id, $secret_key );
 ```

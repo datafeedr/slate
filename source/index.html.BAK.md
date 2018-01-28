@@ -1,6 +1,14 @@
 ---
 title: API Reference
 
+<<<<<<< HEAD
+// language_tabs:
+//   - php: PHP
+
+toc_footers:
+  - <a href='http://www.datafeedr.com/pricing' target='_blank'>Sign Up for a Datafeedr API Key</a>
+  - <a href='https://github.com/lord/slate' target='_blank'>Documentation Powered by Slate</a>
+=======
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - ruby
@@ -10,6 +18,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+>>>>>>> master(lord)
 
 includes:
   - errors
@@ -19,47 +28,39 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+The Datafeedr API enables you to directly query our database of 100s of millions of affiliate products from dozen of affiliate networks. Additionally, you can also query 1,000s of coupons or even use our API to query the Amazon API directly.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Currently, the API only supports [JSON](http://en.wikipedia.org/wiki/JSON) as a request and response format.
 
+<<<<<<< HEAD
+We currently have one PHP API client library. It can be downloaded [here](https://apidocs.datafeedr.com/php/datafeedr.zip).
+=======
 This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+>>>>>>> master(lord)
 
+All code examples (in the right column) are written for the PHP API client library.
+	
 # Authentication
 
-> To authorize, use this code:
+```php
+<?php
 
-```ruby
-require 'kittn'
+// Require PHP API client library.
+require( 'path/to/php/api/client/library/datafeedr.php' );
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+// Initialize API Connection.
+$access_id  = '';
+$secret_key = 'wnQFCbYtoAvLpZqmXvbPmTWePTXZdW4BdfojXbmQMwirC2i8yfMoUf6jcQZWZEcz';
+$api        = new DatafeedrApi( $access_id, $secret_key );
 ```
 
-```python
-import kittn
+> Be sure to replace the **Access ID** and **Secret Key** with your [API keys](https://members.datafeedr.com/).
 
-api = kittn.authorize('meowmeowmeow')
-```
+Authenticate your account when using the API by including your **Access ID** and **Secret Key** in each request. You can purchase and access your API keys in our [member's area](https://members.datafeedr.com/).
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+Your API keys carry many privileges, so be sure to keep them secret!
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+To use your API keys, you need only call \Stripe\Stripe::setApiKey() with your key. The PHP library will then automatically send this key in each request.
 
 <aside class="notice">
 You must replace <code>meowmeowmeow</code> with your personal API key.
@@ -236,3 +237,4 @@ This endpoint deletes a specific kitten.
 Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to delete
+

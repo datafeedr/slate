@@ -17,7 +17,10 @@ A `Query` Object is an array of single **Conditions**.
 
 Conditions make it possible to build complex and powerful search queries.
 
-Conditions are essentially "filters". Each Condition is a single filter. All Conditions are of the type `string`. All Conditions are *AND*'d together.
+- Conditions are essentially "filters".
+- Each Condition is a single filter.
+- All Conditions are of the type `string`.
+- All Conditions are *AND*'d together.
 
 ### Condition Format
 
@@ -53,7 +56,7 @@ In this example we have 3 Conditions. The Request will return records that match
 
 ```json
 "query": [
-	"description LIKE petzl climbing harness",
+	"ANY LIKE petzl climbing harness",
 	"price > 10000",
 	"price < 20000"
 ]
@@ -63,7 +66,7 @@ You can also include multiple Conditions for the same field.
 
 In this example we have 2 Conditions on the same field. The Request will return records that match the following Conditions:
 
-- Product description contains the terms "petzl climbing harness"
+- ANY field contains the terms "petzl climbing harness"
 - and Product price is greater than 100.00
 - and Product price is less than 200.00.
 
@@ -92,11 +95,22 @@ As stated [above](#condition-format), Conditions take the form:
 
 `field operator argument(optional)`.
 
-At this time, the `Merchant` Object and `Product` Object properties can be used as the `field` values in a Condition.
+At this time, the [`Merchant`](#merchant-properties) Object and [`Product`](#product-properties) Object properties can be used as the `field` values in a Condition.
 
 ### Merchant Fields
 
-The following fields (properties) of the `Merchant` Object can be used in a Condition.
+> Example of Merchant field usage
+
+```json
+"query": [
+  "name LIKE magazines|=books",
+  "source LIKE coupons",
+  "source_id !IN 123",
+  "product_count > 5"
+]
+```
+
+The following [`Merchant`](#merchant-properties) Object fields (properties) can be used in a Condition.
 
 Field | Type | [Query Type](#query-types)
 ---|---|---
@@ -108,7 +122,26 @@ Field | Type | [Query Type](#query-types)
 
 ### Product Fields
 
-The following fields (properties) of the `Product` Object can be used in a condition.
+
+> Example of Product field usage
+
+```json
+"query": [
+  "any LIKE climbing women|woman",
+  "name LIKE harness",
+  "source LIKE avantlink|linkshare",
+  "price > 5000",
+  "price < 15000",
+  "merchant !LIKE Jet|Groupon",
+  "onsale = 1",
+  "image !EMPTY",
+  "currency = USD",
+  "brand LIKE mammut|\"black diamond\"|petzl",
+  "salediscount >= 15"
+]
+```
+
+The following [`Product`](#product-properties) Object fields (properties) can be used in a condition.
 
 <aside class="notice">
 Not all <code>Product</code> fields listed below exist for every product.
@@ -173,7 +206,7 @@ Field | Type | [Query Type](#query-types)
 ]
 ```
 
-Search operators make it possible to perform specific types of queries on fields. Which operator you choose depends on the allowed [Query Type(s)](#query-types) of the field.
+Search operators make it possible to perform specific types of queries on fields. Which operator you choose depends on the allowed [Query Type(s)](#query-types) for that field.
 
 Operator | Meaning | Argument | Example
 ---|---|---|---
@@ -193,13 +226,13 @@ Operator | Meaning | Argument | Example
 
 ## Query Types
 
-`Merchant` & `Product` Objects have many properties that can be queried.
+[`Merchant`](#merchant-properties) & [`Product`](#product-properties) Objects have many properties that can be queried. See a list of all [supported fields](#fields).
 
 The [search operator](#search-operators) you use depends on the type of field you are querying against.
 
-For example, the `LIKE` search operator can be applied to the "name" property but the `IN` operator cannot because the `IN` operator only works with some integer fields.
+For example, the `LIKE` search operator can be applied to the "**name**" property but the `IN` operator cannot because the `IN` operator only works with integer fields.
 
-The table below defines which Search Operators work with which Search Types.
+The table below defines which [search operator](#search-operators) work with which Query Types.
 
 Query Type | [Search Operators](#search-operators)
 ---|---

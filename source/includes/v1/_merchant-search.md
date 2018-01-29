@@ -1,6 +1,8 @@
 # Merchant Search
 
-The `merchant_search` endpoint allows you to search for merchants based on various parameters and returns an array of [Merchant Objects](#merchant-properties) that match your search.
+
+The `merchant_search` endpoint returns [`Merchant`](#merchant-properties) related data for merchants that match your search.
+
 
 
 ## Search merchants

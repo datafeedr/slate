@@ -9,7 +9,7 @@ Each Response sent from the Datafeedr API server will meet these requirements:
 
 ## Successful Responses
 
-Every successful API Request will return a `200` HTTP staus code and include the following properties in the Response in addition to any queried data.
+Every successful API Request will return a `200` HTTP status code and include the following properties in the Response in addition to any queried data.
 
 ### Response Properties
 
@@ -17,7 +17,7 @@ The common properties returned after making any successful API Request are the f
 
 Property | Type | Description
 ---|---|---
-`status` | object | `Status` Object (see below).
+`status` | object | [`Status`](#status-properties) Object.
 `time` | integer | Time spent processing the API request (in milliseconds).
 `version` | string | The current version of the API.
 
@@ -55,7 +55,7 @@ The default properties of an `Error` object are the following.
 
 Property | Type| Description
 ---|---|---
-`type` | integer| Error type (see **Error Types** table below).
+`type` | integer| [Error type](#error-types).
 `error` | integer | Error code.
 `message` | string | Error message.
 `details`| string | Error details.

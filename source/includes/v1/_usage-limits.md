@@ -9,7 +9,7 @@ A **billing cycle** is 1 month.
 
 ## How to find your API Usage
 
-Every successful API Request will return a `Status` object which will contain the following useful properties:
+Every successful API Request will return a [`Status`](#status-properties) object which will contain the following useful properties:
 
 - `request_count` - This is the total number of API Requests you have made since the start of your billing cycle.
 

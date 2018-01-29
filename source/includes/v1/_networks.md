@@ -1,12 +1,13 @@
 # Networks
 
-The `Network` Object contains information about a single affiliate network.
-
+The `networks` endpoint returns [`Network`](#network-properties) related data.
 
 
 ## Network Properties
 
-The `Network` Object contains the following properties.
+
+The `Network` Object contains information about a single affiliate network.
+
 
 Property | Type | Description
 ---|---|---

@@ -34,4 +34,4 @@ curl --request POST \
 }'
 ```
 
-Here is an example of a simple product search request which includes an **ACCESS ID** and an **ACCESS KEY** and a `Query` Object containing one condition.
+Here is an example of a simple product search Request which includes an **ACCESS ID** and an **ACCESS KEY** and a [`Query`](#query-object) Object containing one [Condition](#conditions).

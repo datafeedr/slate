@@ -1,13 +1,13 @@
 # Status
 
-The `Status` Object contains information about the API status and your account.
-
+The `status` endpoint returns [`Status`](#status-properties) related data.
 
 
 
 ## Status Properties
 
-The `Status` Object contains the following properties.
+The `Status` Object contains information about the API status and your account.
+
 
 Property | Type | Description
 ---|---|---

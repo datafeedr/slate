@@ -1,12 +1,13 @@
 # Merchants
 
-The `Merchant` Object contains information about a single merchant.
 
+The `merchants` endpoint returns [`Merchant`](#merchant-properties) related data.
 
 
 ## Merchant Properties
 
-The `Merchant` Object contains information about a single Merchant.
+The `Merchant` Object contains information about a single merchant.
+
 
 Property | Type | Description
 ---|---|---

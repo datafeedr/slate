@@ -1,6 +1,7 @@
 # Products
 
-The `search` endpoint allows you to search for products and coupons based on various parameters and returns product data that matches your search.
+
+The `search` endpoint returns [`Product`](#product-properties) data matching your search.
 
 
 ## Product properties

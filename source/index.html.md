@@ -19,6 +19,7 @@ includes:
   - v1/_requests
   - v1/_responses
   - v1/_query-object
+  - v1/_affiliate-links
   - v1/_usage-limits
   - v1/_support
   - v1/_api-reference
@@ -27,6 +28,7 @@ includes:
   - v1/_merchants
   - v1/_merchant-search
   - v1/_search
+  - v1/_zanox-merchant-ids
   - v1/_error-codes
 
 search: true

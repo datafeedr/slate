@@ -1,32 +1,31 @@
-# Networks
+# Merchants
 
-The `Network` Object contains information about a single affiliate network.
+The `Merchant` Object contains information about a single merchant.
 
 
 
-## Network Properties
+## Merchant Properties
 
-The `Network` Object contains the following properties.
+The `Merchant` Object contains information about a single Merchant.
 
 Property | Type | Description
 ---|---|---
-`_id` | integer | Affiliate network ID.
-`name` | string | Affiliate network name.
-`group` | string | Affiliate network group (common) name.
-`merchant_count`  | integer | Total number of merchants in this network.
-`product_count`  | integer | Total number of records in this network.
-`type` | string | Type of records this network supports. Either "products" or "coupons".
+`_id` | integer | Merchant ID.
+`name` | string | Merchant name.
+`source` | string | Affiliate network name.
+`source_id` | integer | Affiliate network ID.
+`product_count`  | integer | Total number of records in this merchant.
 
 
 
 
-## Get all networks
+## Get all merchants
 
-> Example Network Request
+> Example Merchant Request
 
 ```shell
 curl --request POST \
-  --url https://api.datafeedr.com/networks \
+  --url https://api.datafeedr.com/merchants \
   --data '{
     "aid": "ACCESS_ID",
     "akey": "ACCESS_KEY"
@@ -36,7 +35,7 @@ curl --request POST \
 ```php
 <?php
 
-$endpoint = "https://api.datafeedr.com/networks";
+$endpoint = "https://api.datafeedr.com/merchants";
 
 $postfields = json_encode([
     'aid'  => 'ACCESS_ID',
@@ -136,7 +135,7 @@ req.write("{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}");
 req.end();
 ```
 
-> Example Network Response
+> Example Merchant Response
 
 ```json
 {
@@ -145,107 +144,101 @@ req.end();
         "plan_id": 10300,
         "user_id": 190,
         "max_total": 10000,
-        "merchant_count": 57934,
+        "merchant_count": 57971,
         "max_requests": 100000,
         "bill_day": 16,
-        "request_count": 3301,
-        "product_count": 456177393,
+        "request_count": 4367,
+        "product_count": 456469693,
         "max_length": 100
     },
-    "length": 173,
-    "version": "0.2",
-    "networks": [
+    "merchants": [
         {
-            "group": "Adrecord",
-            "name": "Adrecord Coupons/Deals",
-            "merchant_count": 67,
-            "product_count": 17,
-            "_id": 271,
-            "type": "coupons"
+            "source_id": 8,
+            "source": "ShareASale Coupons/Deals",
+            "product_count": 1,
+            "_id": 51862,
+            "name": "'corePHP'"
         },
         {
-            "group": "Adrecord",
-            "name": "Adrecord Denmark",
-            "merchant_count": 8,
-            "product_count": 15497,
-            "_id": 277,
-            "type": "products"
+            "source_id": 120,
+            "source": "Commission Junction Coupons/Deals",
+            "product_count": 0,
+            "_id": 62415,
+            "name": "(eUK) eUKhost Ltd"
         },
         {
-            "group": "Adrecord",
-            "name": "Adrecord Finland",
-            "merchant_count": 7,
-            "product_count": 98239,
-            "_id": 276,
-            "type": "products"
+            "source_id": 3,
+            "source": "Commission Junction",
+            "product_count": 4,
+            "_id": 52287,
+            "name": "(s) Strikingly"
         },
         {
-            "group": "Adrecord",
-            "name": "Adrecord Norway",
-            "merchant_count": 24,
-            "product_count": 261900,
-            "_id": 275,
-            "type": "products"
+            "source_id": 120,
+            "source": "Commission Junction Coupons/Deals",
+            "product_count": 0,
+            "_id": 62490,
+            "name": "(WHUK) WebHosting UK COM Ltd."
         },
         {
-            "group": "Adrecord",
-            "name": "Adrecord Sweden",
-            "merchant_count": 330,
-            "product_count": 734460,
-            "_id": 270,
-            "type": "products"
+            "source_id": 123,
+            "source": "Avangate",
+            "product_count": 0,
+            "_id": 19580,
+            "name": "++Technologies"
         },
 
-        // ...
+ 		// ...
 
         {
-            "group": "Zanox",
-            "name": "Zanox Norway",
-            "merchant_count": 17,
-            "product_count": 948567,
-            "_id": 410,
-            "type": "products"
+            "source_id": 700,
+            "source": "Shopello Sweden",
+            "product_count": 0,
+            "_id": 64937,
+            "name": "ÖVERLEVNADSBUTIKEN"
         },
         {
-            "group": "Zanox",
-            "name": "Zanox Poland",
-            "merchant_count": 55,
-            "product_count": 417207,
-            "_id": 416,
-            "type": "products"
+            "source_id": 15,
+            "source": "Partner-ads",
+            "product_count": 11445,
+            "_id": 61983,
+            "name": "Økologisk Supermarked"
         },
         {
-            "group": "Zanox",
-            "name": "Zanox Spain",
-            "merchant_count": 77,
-            "product_count": 1751507,
-            "_id": 405,
-            "type": "products"
+            "source_id": 701,
+            "source": "Shopello Denmark",
+            "product_count": 0,
+            "_id": 66150,
+            "name": "Økologisk-Supermarked"
         },
         {
-            "group": "Zanox",
-            "name": "Zanox Sweden",
-            "merchant_count": 46,
-            "product_count": 892027,
-            "_id": 407,
-            "type": "products"
+            "source_id": 15,
+            "source": "Partner-ads",
+            "product_count": 0,
+            "_id": 52617,
+            "name": "Økoshoppen.dk"
         },
         {
-            "group": "Zanox",
-            "name": "Zanox Switzerland",
-            "merchant_count": 61,
-            "product_count": 4065447,
-            "_id": 411,
-            "type": "products"
+            "source_id": 26,
+            "source": "Webgains Denmark",
+            "product_count": 0,
+            "_id": 32591,
+            "name": "Økozonen"
         }
     ],
-    "time": 0
+    "version": "0.2",
+    "length": 57971,
+    "time": 10
 }
 ```
 
-`POST https://api.datafeedr.com/networks`
+`POST https://api.datafeedr.com/merchants`
 
-Get all affiliate networks.
+Get all merchants.
+
+<aside class="notice">
+<strong>WARNING:</strong> A Request to this endpoint without any filters in place will take a long time and return over 50,000 results. This is NOT RECOMMENDED.
+</aside>
 
 
 ### Request Properties
@@ -257,8 +250,8 @@ There are no additional properties required for this Request.
 
 Property | Type | Description
 ---|---|---
-`networks` | array | Array of [`Network`](#network-properties) Objects.
-`length` | integer | Number of networks returned.
+`merchants` | array | Array of [`Merchant`](#merchant-properties) Objects.
+`length` | integer | Number of merchants returned.
 `status` | object | [`Status`](#status-properties) Object.
 `time` | integer | Time spent processing the API request (in milliseconds).
 `version` | string | The current version of the API.
@@ -274,17 +267,17 @@ Property | Type | Description
 
 
 
-## Get specific networks & fields
+## Get merchants by network
 
-> Example Network Request
+> Example Merchant Request
 
 ```shell
 curl --request POST \
-  --url https://api.datafeedr.com/networks \
+  --url https://api.datafeedr.com/merchants \
   --data '{
     "aid": "ACCESS_ID",
     "akey": "ACCESS_KEY",
-    "fields": ["name", "product_count"],
+    "fields": ["name", "product_count", "source"],
     "source_ids": [6, 126]
 }'
 ```
@@ -393,7 +386,7 @@ req.write("{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}");
 req.end();
 ```
 
-> Example Network Response
+> Example Merchant Response
 
 ```json
 {
@@ -405,31 +398,84 @@ req.end();
         "merchant_count": 57971,
         "max_requests": 100000,
         "bill_day": 16,
-        "request_count": 4365,
+        "request_count": 4366,
         "product_count": 456469693,
         "max_length": 100
     },
-    "length": 2,
-    "version": "0.2",
-    "networks": [
+    "merchants": [
         {
-            "product_count": 1615690,
-            "_id": 126,
-            "name": "AvantLink US"
+            "product_count": 0,
+            "source": "ShareASale",
+            "_id": 32023,
+            "name": "1 Louder Inc"
         },
         {
-            "product_count": 20053459,
-            "_id": 6,
-            "name": "ShareASale"
+            "product_count": 0,
+            "source": "AvantLink US",
+            "_id": 40527,
+            "name": "100 Percent Pure"
+        },
+        {
+            "product_count": 6919,
+            "source": "ShareASale",
+            "_id": 1269,
+            "name": "123 REFILLS"
+        },
+        {
+            "product_count": 0,
+            "source": "AvantLink US",
+            "_id": 80554,
+            "name": "123 Refills"
+        },
+        {
+            "product_count": 1288,
+            "source": "ShareASale",
+            "_id": 1282,
+            "name": "123Posters.com, Inc."
+        },
+
+        // ...
+
+        {
+            "product_count": 0,
+            "source": "ShareASale",
+            "_id": 17583,
+            "name": "zorem corp"
+        },
+        {
+            "product_count": 0,
+            "source": "AvantLink US",
+            "_id": 48637,
+            "name": "ZOZI"
+        },
+        {
+            "product_count": 0,
+            "source": "ShareASale",
+            "_id": 96436,
+            "name": "Zulily"
+        },
+        {
+            "product_count": 0,
+            "source": "ShareASale",
+            "_id": 75932,
+            "name": "zulily"
+        },
+        {
+            "product_count": 0,
+            "source": "AvantLink US",
+            "_id": 23729,
+            "name": "Zupplements"
         }
     ],
-    "time": 0
+    "version": "0.2",
+    "length": 2110,
+    "time": 23
 }
 ```
 
-`POST https://api.datafeedr.com/networks`
+`POST https://api.datafeedr.com/merchants`
 
-Get affiliate networks by network ID and limit the fields returned for each network.
+Get merchants of specific networks and limit the fields returned for each merchant.
 
 
 
@@ -437,7 +483,7 @@ Get affiliate networks by network ID and limit the fields returned for each netw
 
 Property | Value | Type | Required
 ---|---|---|---|---
-`fields` | Array of `Network` properties to include in the results. | `["name","type","..."]` | No
+`fields` | Array of `Merchant` properties to include in the results. | `["name","source","..."]` | No
 `source_ids` | Array of network IDs to filter results by. | `[4,6,9,...]` | No
 
 
@@ -445,8 +491,8 @@ Property | Value | Type | Required
 
 Property | Type | Description
 ---|---|---
-`networks` | array | Array of [`Network`](#network-properties) Objects.
-`length` | integer | Number of networks returned.
+`merchants` | array | Array of [`Merchant`](#merchant-properties) Objects.
+`length` | integer | Number of merchants returned.
 `status` | object | [`Status`](#status-properties) Object.
 `time` | integer | Time spent processing the API request (in milliseconds).
 `version` | string | The current version of the API.

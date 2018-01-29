@@ -24,6 +24,9 @@ includes:
   - v1/_api-reference
   - v1/_status
   - v1/_networks
+  - v1/_merchants
+  - v1/_merchant-search
+  - v1/_search
   - v1/_error-codes
 
 search: true

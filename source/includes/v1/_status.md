@@ -179,7 +179,7 @@ There are no additional properties required for this Request.
 
 Property | Type | Description
 ---|---|---
-`status` | object | `Status` Object.
+`status` | object | [`Status`](#status-properties) Object.
 `time` | integer | Time spent processing the API request (in milliseconds).
 `version` | string | The current version of the API.
 

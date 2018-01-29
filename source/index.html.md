@@ -21,9 +21,9 @@ includes:
   - v1/_query-object
   - v1/_usage-limits
   - v1/_support
-  - v1/_getting-started
   - v1/_api-reference
   - v1/_status
+  - v1/_networks
   - v1/_error-codes
 
 search: true

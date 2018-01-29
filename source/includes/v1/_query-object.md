@@ -1,22 +1,30 @@
 # Query Object
 
+```json
+"query": [
+  "condition 1",
+  "condition 2",
+  "condition 3"
+]
+```
+
 The Datafeedr API provides a powerful and robust search syntax through the use of the `Query` Object.
 
-A `Query` Object is an array of single **conditions**.
+A `Query` Object is an array of single **Conditions**.
 
 
 ## Conditions
 
 Conditions make it possible to build complex and powerful search queries.
 
-Conditions are `string`s of single "filters". All conditions are *AND*'d together.
+Conditions are essentially "filters". Each Condition is a single filter. All Conditions are of the type `string`. All Conditions are *AND*'d together.
 
 ### Condition Format
 
 Conditions take the form: `field operator argument(optional)`.
 
-- `field` - An `Object` property name or `ANY` to use any field.
-- `operator` - Depends on the field type.
+- `field` - An `Object` property name or `ANY` to use any field. [See Fields](#fields)
+- `operator` - Depends on the field type. [See Operators](#search-operators)
 - `argument` - Depends on the field type. Sometimes optional.
 
 Below are a few examples of multiple conditions in a `Query` Object.
@@ -26,14 +34,14 @@ Below are a few examples of multiple conditions in a `Query` Object.
 ### Condition Example #1 - AND'd Conditions
 
 ```json
-[
+"query": [
 	"name LIKE farpoint 55",
 	"brand LIKE osprey",
 	"onsale = 1"
 ]
 ```
 
-In this example we have 3 conditions. The Request will return records that match the following conditions:
+In this example we have 3 Conditions. The Request will return records that match the following Conditions:
 
 - Product name contains the terms "farpoint 55"
 - and Product brand contains the term "osprey"
@@ -44,16 +52,16 @@ In this example we have 3 conditions. The Request will return records that match
 ### Condition Example #2 - Multiple Conditions, Same Field
 
 ```json
-[
+"query": [
 	"description LIKE petzl climbing harness",
 	"price > 10000",
 	"price < 20000"
 ]
 ```
 
-You can also include multiple conditions for the same field.
+You can also include multiple Conditions for the same field.
 
-In this example we have 2 conditions on the same field. The Request will return records that match the following conditions:
+In this example we have 2 Conditions on the same field. The Request will return records that match the following Conditions:
 
 - Product description contains the terms "petzl climbing harness"
 - and Product price is greater than 100.00
@@ -63,7 +71,7 @@ In this example we have 2 conditions on the same field. The Request will return 
 ### Condition Example #3 - Missing "positive" Condition
 
 ```json
-[
+"query": [
 	"name !LIKE farpoint",
 	"source_id !IN 6, 126"
 ]
@@ -75,24 +83,24 @@ This Request is invalid.
 
 Every `Query` Object should contain at least one "positive" search.
 
-In this example we have 2 conditions but both are "negative". The Request will fail because it doesn't contain at least one "positive" search.
+In this example we have 2 Conditions but both are "negative". The Request will fail because it doesn't contain at least one "positive" Condition.
 
 
 ## Fields
 
-As stated [above](#condition-format), conditions take the form:
+As stated [above](#condition-format), Conditions take the form:
 
 `field operator argument(optional)`.
 
-At this time, the `Merchant` Object and `Product` Object properties can be used as the `field` values in a condition.
+At this time, the `Merchant` Object and `Product` Object properties can be used as the `field` values in a Condition.
 
 ### Merchant Fields
 
-The following fields (properties) of the `Merchant` Object can be used in a condition.
+The following fields (properties) of the `Merchant` Object can be used in a Condition.
 
-Field | Type | [Search Type](#search-types)
+Field | Type | [Query Type](#query-types)
 ---|---|---
-`_id` | integer | **INT**
+`id` | integer | **INT**
 `name` | string | **TEXT**
 `source` | string | **INT**
 `source_id` | integer | **TEXT**
@@ -106,9 +114,9 @@ The following fields (properties) of the `Product` Object can be used in a condi
 Not all <code>Product</code> fields listed below exist for every product.
 </aside>
 
-Field | Type | [Search Type](#search-types)
+Field | Type | [Query Type](#query-types)
 ---|---|---
-`_id` | integer | **INT**
+`id` | integer | **INT**
 `brand` | string | **TEXT**
 `category` | string | **TEXT**
 `color` | string | **TEXT**
@@ -141,78 +149,82 @@ Field | Type | [Search Type](#search-types)
 `upc` | string | **TEXT**
 
 
-## Operators
+## Search Operators
 
 > Search operator examples
 
 ```json
-"any !LIKE mens"
-"name LIKE climbing harness"
-"brand LIKE petzl"
-"description LIKE big|large"
-"tags LIKE climbing"
-"category LIKE rock climbing"
-"currency = USD"
-"finalprice <= 20000"
-"onsale = 1"
-"direct_url !EMPTY"
-"salediscount > 15"
-"image !EMPTY"
-"time_updated > 2018-01-25 00:00:00"
-"source_id IN 126 3 6"
-"merchant_id IN 1312 94836 12927"
+"query": [
+  "any !LIKE mens",
+  "name LIKE climbing harness",
+  "brand LIKE petzl",
+  "description LIKE big|large",
+  "tags LIKE climbing",
+  "category LIKE rock climbing",
+  "currency = USD",
+  "finalprice <= 20000",
+  "onsale = 1",
+  "direct_url !EMPTY",
+  "salediscount > 15",
+  "image !EMPTY",
+  "time_updated > 2018-01-25 00:00:00",
+  "source_id IN 126 3 6",
+  "merchant_id IN 1312 94836 12927"
+]
 ```
 
-Search operators make it possible to perform specific types of queries on fields.
+Search operators make it possible to perform specific types of queries on fields. Which operator you choose depends on the allowed [Query Type(s)](#query-types) of the field.
 
-Operator | Meaning | [Search Type](#search-types) | Argument
+Operator | Meaning | Argument | Example
 ---|---|---|---
-`EMPTY` | field is empty | **EMPTY** | none, must be omitted
-`!EMPTY`| field is not empty | **EMPTY** | none, must be omitted
-`LIKE` | fulltext match | **TEXT** | fulltext query
-`!LIKE` | fulltext not match | **TEXT** | fulltext query
-`=` | strictly equal | **TEXT**, **INT**, **DATE** | `string`, `integer`, `timestamp`
-`!=` | strictly not equal | **TEXT**, **INT**, **DATE** | `string`, `integer`, `timestamp`
-`>` | more than | **INT**, **DATE** | `integer`, `timestamp`
-`>=` | more or equal | **INT**, **DATE** | `integer`, `timestamp`
-`<` | less than | **INT**, **DATE** | `integer`, `timestamp`
-`<=` | less or equal | **INT**, **DATE** | `integer`, `timestamp`
-`IN` | one of | **INT** | comma-separated list of integers
-`!IN` | neither of | **INT** | comma-separated list of integers
+`EMPTY` | field is empty | none, must be omitted | `saleprice EMPTY`
+`!EMPTY`| field is not empty | none, must be omitted | `image !EMPTY`
+`LIKE` | fulltext match | fulltext query | `name LIKE iphone`
+`!LIKE` | fulltext not match | fulltext query | `brand !LIKE apple`
+`=` | strictly equal | `string`, `integer`, `timestamp` | `currency = USD`
+`!=` | strictly not equal | `string`, `integer`, `timestamp` | `currency != CAD`
+`>` | more than | `integer`, `timestamp` | `price > 10000`
+`>=` | more or equal | `integer`, `timestamp` | `salediscount >= 25`
+`<` | less than | `integer`, `timestamp` | `finalprice < 10000`
+`<=` | less or equal | `integer`, `timestamp` | `offerbegin <= 2018-01-11 00:00:00`
+`IN` | one of | comma-separated list of integers | `merchant_id IN 123, 456`
+`!IN` | neither of | comma-separated list of integers | `source_id !IN 321, 654`
 
 
-## Search Types
+## Query Types
 
-`Merchant` & `Product` Objects have multiple properties that can be queried.
+`Merchant` & `Product` Objects have many properties that can be queried.
 
-The search operator you use depends on the type of field you are querying against.
+The [search operator](#search-operators) you use depends on the type of field you are querying against.
 
 For example, the `LIKE` search operator can be applied to the "name" property but the `IN` operator cannot because the `IN` operator only works with some integer fields.
 
 The table below defines which Search Operators work with which Search Types.
 
-Search Type | Search Operators (See usage above)
+Query Type | [Search Operators](#search-operators)
 ---|---
 **TEXT** | `LIKE` `!LIKE` `=` `!=`
 **INT** | `=` `!=` `>` `>=` `<` `<=` `IN` `!IN`
 **DATE** | `=` `!=` `>` `>=` `<` `<=`
 **EMPTY** | `EMPTY`  `!EMPTY`
 
-*All dates are stored in the format `YYYY-MM-DD HH:MM:SS`.*
+*All dates are stored in the format `YYYY-MM-DD HH:MM:SS` in UTC*
 
 ## Fulltext Queries
 
 > Fulltext query examples
 
 ```json
-"ANY LIKE shoe"
-"name LIKE female|woman !mens running shoe"
-"name LIKE ^Red =shoe for walking|running"
-"description LIKE cheap|inexpensive|affordable"
-"brand LIKE =nike"
+"query": [
+  "ANY LIKE shoe",
+  "name LIKE female|woman !mens running shoe",
+  "name LIKE ^Red =shoe for walking|running",
+  "description LIKE cheap|inexpensive|affordable",
+  "brand LIKE =nike"
+]
 ```
 
-Fields that have a [search type](#search-types) of **TEXT** are available for fulltext search queries.
+Fields that have a [Query Type](#query-types) of **TEXT** are also available for fulltext search queries.
 
 By default, when searching a text field, all words are *AND*'d together.
 

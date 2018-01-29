@@ -856,7 +856,7 @@ req.end();
 
 Search for coupons matching specific criteria.
 
-This calls the same `search` endpoint as a product search. It just uses queries different  [fields](#product-fields) so that only coupons and deals are returned and regular products are ignored.
+This calls the same `search` endpoint as a product search. It just queries different  [fields](#product-fields) so that only coupons and deals are returned and regular products are ignored.
 
 See a list of [queryable Product fields](#product-fields).
 

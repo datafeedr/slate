@@ -39,7 +39,7 @@ curl --request POST \
 
 $endpoint = "https://api.datafeedr.com/networks";
 
-$postfields = json_encode([
+$data = json_encode([
     'aid'  => 'ACCESS_ID',
     'akey' => 'ACCESS_KEY'
 ]);
@@ -54,10 +54,8 @@ curl_setopt_array($curl, array(
     CURLOPT_TIMEOUT        => 30,
     CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST  => "POST",
-    CURLOPT_POSTFIELDS     => $postfields,
-    CURLOPT_HTTPHEADER     => array(
-        "Cache-Control: no-cache"
-    ),
+    CURLOPT_POSTFIELDS     => $data,
+    CURLOPT_HTTPHEADER     => array("Cache-Control: no-cache"),
 ));
 
 $response = curl_exec($curl);
@@ -72,70 +70,6 @@ if ($err) {
 }
 ```
 
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://api.datafeedr.com/networks")
-
-http = Net::HTTP.new(url.host, url.port)
-
-request = Net::HTTP::Post.new(url)
-request.body = "{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}"
-
-response = http.request(request)
-puts response.read_body
-```
-
-```python
-import requests
-
-url = "https://api.datafeedr.com/networks"
-
-payload = "{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}"
-headers = {
-    'Cache-Control': "no-cache"
-    }
-
-response = requests.request("POST", url, data=payload, headers=headers)
-
-print(response.text)
-```
-
-```javascript
-var http = require("https");
-
-var options = {
-  "method": "POST",
-  "hostname": [
-    "api",
-    "datafeedr",
-    "com"
-  ],
-  "path": [
-    "networks"
-  ],
-  "headers": {
-    "Cache-Control": "no-cache"
-  }
-};
-
-var req = http.request(options, function (res) {
-  var chunks = [];
-
-  res.on("data", function (chunk) {
-    chunks.push(chunk);
-  });
-
-  res.on("end", function () {
-    var body = Buffer.concat(chunks);
-    console.log(body.toString());
-  });
-});
-
-req.write("{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}");
-req.end();
-```
 
 > Example Network Response
 
@@ -295,7 +229,7 @@ curl --request POST \
 
 $endpoint = "https://api.datafeedr.com/networks";
 
-$postfields = json_encode([
+$data = json_encode([
     'aid'        => 'ACCESS_ID',
     'akey'       => 'ACCESS_KEY',
     'source_ids' => [6, 126]
@@ -311,10 +245,8 @@ curl_setopt_array($curl, array(
     CURLOPT_TIMEOUT        => 30,
     CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST  => "POST",
-    CURLOPT_POSTFIELDS     => $postfields,
-    CURLOPT_HTTPHEADER     => array(
-        "Cache-Control: no-cache"
-    ),
+    CURLOPT_POSTFIELDS     => $data,
+    CURLOPT_HTTPHEADER     => array("Cache-Control: no-cache"),
 ));
 
 $response = curl_exec($curl);
@@ -329,70 +261,6 @@ if ($err) {
 }
 ```
 
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://api.datafeedr.com/networks")
-
-http = Net::HTTP.new(url.host, url.port)
-
-request = Net::HTTP::Post.new(url)
-request.body = "{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}"
-
-response = http.request(request)
-puts response.read_body
-```
-
-```python
-import requests
-
-url = "https://api.datafeedr.com/networks"
-
-payload = "{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}"
-headers = {
-    'Cache-Control': "no-cache"
-    }
-
-response = requests.request("POST", url, data=payload, headers=headers)
-
-print(response.text)
-```
-
-```javascript
-var http = require("https");
-
-var options = {
-  "method": "POST",
-  "hostname": [
-    "api",
-    "datafeedr",
-    "com"
-  ],
-  "path": [
-    "networks"
-  ],
-  "headers": {
-    "Cache-Control": "no-cache"
-  }
-};
-
-var req = http.request(options, function (res) {
-  var chunks = [];
-
-  res.on("data", function (chunk) {
-    chunks.push(chunk);
-  });
-
-  res.on("end", function () {
-    var body = Buffer.concat(chunks);
-    console.log(body.toString());
-  });
-});
-
-req.write("{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}");
-req.end();
-```
 
 > Example Network Response
 

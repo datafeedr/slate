@@ -113,9 +113,40 @@ curl --request POST \
 
 $endpoint = "https://api.datafeedr.com/search";
 
-$postfields = json_encode([
-    'aid'  => 'ACCESS_ID',
-    'akey' => 'ACCESS_KEY'
+$data = json_encode([
+    'aid'    => 'ACCESS_ID',
+    'akey'   => 'ACCESS_KEY',
+    'query'              => [
+        'any LIKE climbing women|woman',
+        'name LIKE harness',
+        'source LIKE avantlink|linkshare',
+        'price > 5000',
+        'price < 15000',
+        'merchant !LIKE Jet|Groupon',
+        'onsale = 1',
+        'image !EMPTY',
+        'currency = USD',
+        'brand LIKE mammut|\'black diamond\'|petzl',
+        'salediscount >= 15'
+    ],
+    'fields'             => [
+        'name',
+        'price',
+        'finalprice',
+        'merchant',
+        'source',
+        'brand',
+        'salediscount',
+        'url',
+        'currency',
+        'image'
+    ],
+    'price_groups'       => 3,
+    'limit'              => 10,
+    'offset'             => 0,
+    'sort'               => ['+finalprice'],
+    'exclude_duplicates' => 'merchant_id name|image',
+    'string_ids'         => false
 ]);
 
 $curl = curl_init();
@@ -128,10 +159,8 @@ curl_setopt_array($curl, array(
     CURLOPT_TIMEOUT        => 30,
     CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST  => "POST",
-    CURLOPT_POSTFIELDS     => $postfields,
-    CURLOPT_HTTPHEADER     => array(
-        "Cache-Control: no-cache"
-    ),
+    CURLOPT_POSTFIELDS     => $data,
+    CURLOPT_HTTPHEADER     => array("Cache-Control: no-cache"),
 ));
 
 $response = curl_exec($curl);
@@ -144,71 +173,6 @@ if ($err) {
 } else {
     echo $response;
 }
-```
-
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://api.datafeedr.com/networks")
-
-http = Net::HTTP.new(url.host, url.port)
-
-request = Net::HTTP::Post.new(url)
-request.body = "{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}"
-
-response = http.request(request)
-puts response.read_body
-```
-
-```python
-import requests
-
-url = "https://api.datafeedr.com/networks"
-
-payload = "{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}"
-headers = {
-    'Cache-Control': "no-cache"
-    }
-
-response = requests.request("POST", url, data=payload, headers=headers)
-
-print(response.text)
-```
-
-```javascript
-var http = require("https");
-
-var options = {
-  "method": "POST",
-  "hostname": [
-    "api",
-    "datafeedr",
-    "com"
-  ],
-  "path": [
-    "networks"
-  ],
-  "headers": {
-    "Cache-Control": "no-cache"
-  }
-};
-
-var req = http.request(options, function (res) {
-  var chunks = [];
-
-  res.on("data", function (chunk) {
-    chunks.push(chunk);
-  });
-
-  res.on("end", function () {
-    var body = Buffer.concat(chunks);
-    console.log(body.toString());
-  });
-});
-
-req.write("{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}");
-req.end();
 ```
 
 > Example Product Search Response
@@ -531,9 +495,17 @@ curl --request POST \
 
 $endpoint = "https://api.datafeedr.com/search";
 
-$postfields = json_encode([
-    'aid'  => 'ACCESS_ID',
-    'akey' => 'ACCESS_KEY'
+$data = json_encode([
+    'aid'    => 'ACCESS_ID',
+    'akey'   => 'ACCESS_KEY',
+    'query'  => [
+        'source LIKE coupons',
+        'merchant LIKE mountain|outdoor|rei|sports',
+        'offerbegin >= 2018-01-01 00:00:00',
+        'offerend < 2018-02-01 00:00:00'
+    ],
+    'fields' => ['name', 'offerbegin', 'offerend', 'offercode', 'source', 'brand', 'url', 'merchant'],
+    'limit'  => 10
 ]);
 
 $curl = curl_init();
@@ -546,10 +518,8 @@ curl_setopt_array($curl, array(
     CURLOPT_TIMEOUT        => 30,
     CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST  => "POST",
-    CURLOPT_POSTFIELDS     => $postfields,
-    CURLOPT_HTTPHEADER     => array(
-        "Cache-Control: no-cache"
-    ),
+    CURLOPT_POSTFIELDS     => $data,
+    CURLOPT_HTTPHEADER     => array("Cache-Control: no-cache"),
 ));
 
 $response = curl_exec($curl);
@@ -562,71 +532,6 @@ if ($err) {
 } else {
     echo $response;
 }
-```
-
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://api.datafeedr.com/networks")
-
-http = Net::HTTP.new(url.host, url.port)
-
-request = Net::HTTP::Post.new(url)
-request.body = "{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}"
-
-response = http.request(request)
-puts response.read_body
-```
-
-```python
-import requests
-
-url = "https://api.datafeedr.com/networks"
-
-payload = "{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}"
-headers = {
-    'Cache-Control': "no-cache"
-    }
-
-response = requests.request("POST", url, data=payload, headers=headers)
-
-print(response.text)
-```
-
-```javascript
-var http = require("https");
-
-var options = {
-  "method": "POST",
-  "hostname": [
-    "api",
-    "datafeedr",
-    "com"
-  ],
-  "path": [
-    "networks"
-  ],
-  "headers": {
-    "Cache-Control": "no-cache"
-  }
-};
-
-var req = http.request(options, function (res) {
-  var chunks = [];
-
-  res.on("data", function (chunk) {
-    chunks.push(chunk);
-  });
-
-  res.on("end", function () {
-    var body = Buffer.concat(chunks);
-    console.log(body.toString());
-  });
-});
-
-req.write("{\n    \"aid\": \"ACCESS_ID\",\n    \"akey\": \"ACCESS_KEY\"\n}");
-req.end();
 ```
 
 > Example Coupon Search Response

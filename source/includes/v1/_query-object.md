@@ -141,7 +141,7 @@ Field | Type | [Query Type](#query-types)
 ]
 ```
 
-The following [`Product`](#product-properties) Object fields (properties) can be used in a condition.
+The following [`Product`](#product-properties) Object fields (properties) can be used in a Condition.
 
 <aside class="notice">
 Not all <code>Product</code> fields listed below exist for every product.

@@ -15,7 +15,7 @@ Property | Type | Description
 `name` | string | Merchant name.
 `source` | string | Affiliate network name.
 `source_id` | integer | Affiliate network ID.
-`product_count`  | integer | Total number of records in this merchant.
+`product_count`  | integer | Total number of records for this merchant.
 
 
 

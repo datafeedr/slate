@@ -15,7 +15,7 @@ Property | Type | Description
 `name` | string | Affiliate network name.
 `group` | string | Affiliate network group (common) name.
 `merchant_count`  | integer | Total number of merchants in this network.
-`product_count`  | integer | Total number of records in this network.
+`product_count`  | integer | Total number of records for this network.
 `type` | string | Type of records this network supports. Either "products" or "coupons".
 
 
@@ -307,7 +307,7 @@ Get affiliate networks by network ID and limit the fields returned for each netw
 Property | Value | Type | Required
 ---|---|---|---|---
 `fields` | Array of `Network` properties to include in the results. | `["name","type","..."]` | No
-`source_ids` | Array of network IDs to filter results by. | `[4,6,9,...]` | No
+`source_ids` | Array of `Network` IDs to filter results by. | `[4,6,9,...]` | No
 
 
 ### Response Properties

@@ -24,9 +24,9 @@ Both fields contain URLs with the characters `@@@` in the URL. You must replace 
 
 If an affiliate network allows sub-tracking, then a `ref_url` field will also be present and the URL in that field will contain the `###` characters. This can be used to pass additional tracking data to the affiliate network. Replacing `###` with a sub-tracking value is **OPTIONAL**.
 
-If you do not need to do sub-tracking the you should always use the `url` field.
+If you do not need to do sub-tracking the you should use the `url` field.
 
-If you need help finding your affiliate IDs, check [our documentation](#https://datafeedrapi.helpscoutdocs.com/category/183-networks-merchants).
+If you need help finding your affiliate IDs, check [our documentation](https://datafeedrapi.helpscoutdocs.com/category/183-networks-merchants).
 
 
 

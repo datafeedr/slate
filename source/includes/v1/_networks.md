@@ -274,7 +274,7 @@ Property | Type | Description
 
 
 
-## Get specific networks
+## Get specific networks & fields
 
 > Example Network Request
 
@@ -284,6 +284,7 @@ curl --request POST \
   --data '{
     "aid": "ACCESS_ID",
     "akey": "ACCESS_KEY",
+    "fields": ["name", "product_count"],
     "source_ids": [6, 126]
 }'
 ```
@@ -401,31 +402,25 @@ req.end();
         "plan_id": 10300,
         "user_id": 190,
         "max_total": 10000,
-        "merchant_count": 57934,
+        "merchant_count": 57971,
         "max_requests": 100000,
         "bill_day": 16,
-        "request_count": 3312,
-        "product_count": 456177393,
+        "request_count": 4365,
+        "product_count": 456469693,
         "max_length": 100
     },
     "length": 2,
     "version": "0.2",
     "networks": [
         {
-            "group": "AvantLink",
-            "name": "AvantLink US",
-            "merchant_count": 757,
-            "product_count": 1618970,
+            "product_count": 1615690,
             "_id": 126,
-            "type": "products"
+            "name": "AvantLink US"
         },
         {
-            "group": "ShareASale",
-            "name": "ShareASale",
-            "merchant_count": 1345,
-            "product_count": 19943235,
+            "product_count": 20053459,
             "_id": 6,
-            "type": "products"
+            "name": "ShareASale"
         }
     ],
     "time": 0
@@ -434,17 +429,16 @@ req.end();
 
 `POST https://api.datafeedr.com/networks`
 
-Get specific affiliate networks by network ID.
+Get affiliate networks by network ID and limit the fields returned for each network.
 
 
 
 ### Request Properties
 
-There are no additional properties required for this Request.
-
-Property | Value | Type
+Property | Value | Type | Required
 ---|---|---|---|---
-`source_ids` | Array of network IDs to return | `[4,6,9,...]`
+`fields` | Array of `Network` properties to include in the results. | `["name","type","..."]` | No
+`source_ids` | Array of network IDs to filter results by. | `[4,6,9,...]` | No
 
 
 ### Response Properties
@@ -456,4 +450,12 @@ Property | Type | Description
 `status` | object | `Status` Object.
 `time` | integer | Time spent processing the API request (in milliseconds).
 `version` | string | The current version of the API.
+
+
+
+
+
+
+
+
 

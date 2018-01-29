@@ -26,8 +26,8 @@ Property | Type | Description
 curl --request POST \
 	--url https://api.datafeedr.com/search \
 	--data '{
-	"aid": "ACCESS ID",
-	"akey": "ACCESS KEY",
+	"aid": "ACCESS_ID",
+	"akey": "ACCESS_KEY",
 	"query": [
 		"name LIKE rock climbing harness"
 	]

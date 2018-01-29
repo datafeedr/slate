@@ -6,7 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - php
   - ruby
   - python
-  - node
+  - javascript: node
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -23,6 +23,7 @@ includes:
   - v1/_support
   - v1/_getting-started
   - v1/_api-reference
+  - v1/_status
   - v1/_error-codes
 
 search: true

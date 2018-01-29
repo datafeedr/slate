@@ -2,8 +2,8 @@
 
 ```json
 {
-    "aid": "ACCESS ID",
-    "akey": "ACCESS KEY"
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY"
 }
 ```
 

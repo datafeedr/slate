@@ -116,8 +116,8 @@ Field | Type | [Query Type](#query-types)
 ---|---|---
 `id` | integer | **INT**
 `name` | string | **TEXT**
-`source` | string | **INT**
-`source_id` | integer | **TEXT**
+`source` | string | **TEXT**
+`source_id` | integer | **INT**
 `product_count`  | integer | **INT**
 
 ### Product Fields

@@ -14,7 +14,7 @@ Property | Type | Description
 `network_count` | integer | Total number of affiliate networks.
 `merchant_count` | integer | Total number of merchants.
 `product_count`  | integer | Total number of products.
-`plan_id` | string | Your Datafeedr subscription plan ID.
+`plan_id` | integer | Your Datafeedr subscription plan ID.
 `bill_day` | integer | Day of the month your subscription billing cycle renews.
 `request_count` | integer | Total number of API requests made since the start of the billing cycle.
 `max_total` | integer | Maximum number of results returned for a search (requires `offset`).

@@ -225,6 +225,14 @@
           </li>
           <li>
             <a href="#requirements" class="toc-h1 toc-link" data-title="requirements">Requirements</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1-api-keys" class="toc-h2 toc-link" data-title="1-api-keys">1. API Keys</a>
+                  </li>
+                  <li>
+                    <a href="#2-affiliate-ids" class="toc-h2 toc-link" data-title="2-affiliate-ids">2. Affiliate IDs</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
@@ -376,7 +384,7 @@
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='https://github.com/datafeedr/datafeedr-api-docs'>Contribute to this documentation</a></li>
+            <li><a href='https://github.com/datafeedr/datafeedr-api-docs'>Contribute to this Documentation</a></li>
             <li><a href='http://www.datafeedr.com/pricing'>Purchase Datafeedr API Keys</a></li>
             <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
@@ -395,11 +403,22 @@
 
 <p>Our API provides a powerful interface that enables you to programatically find and filter product and coupon data from the <a href="http://www.datafeedr.com/networks">affiliate network and merchants we support</a> giving you the keys to build something awesome!</p>
 <h1 id='requirements'>Requirements</h1>
-<p>The only requirement for using the Datafeedr API is a set of API keys which can be <a href="https://members.datafeedr.com/subscribe">purchased here</a>.</p>
+<p>There are 2 requirements for using the Datafeedr API.</p>
+<h2 id='1-api-keys'>1. API Keys</h2>
+<p>You will need a set of Datafeedr API keys which can be <a href="https://members.datafeedr.com/subscribe">purchased here</a>.</p>
 
 <p>Datafeedr API keys consist of an <strong>ACCESS ID</strong> and an <strong>ACCESS KEY</strong> which must be included in all API Requests.</p>
 
 <p>See the <a href="#usage-limits">Usage Limits</a> section for more information on API Request limits.</p>
+<h2 id='2-affiliate-ids'>2. Affiliate IDs</h2>
+<p>You can make Requests to the Datafeedr API without affiliate IDs but in order <a href="#inserting-affiliate-id">insert your affiliate IDs</a> into the affiliate URLs, you will need to:</p>
+
+<ul>
+<li>have an account at any affiliate network you want to promote products from</li>
+<li>be approved by any merchant you want to promote products from</li>
+</ul>
+
+<p>Without a valid affiliate ID you will not receive commissions for referred sales.</p>
 <h1 id='authentication'>Authentication</h1><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"aid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCESS_ID"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"akey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCESS_KEY"</span><span class="w">

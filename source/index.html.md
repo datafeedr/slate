@@ -9,7 +9,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   # - javascript: node
 
 toc_footers:
-  - <a href='https://github.com/datafeedr/datafeedr-api-docs'>Contribute to this documentation</a>
+  - <a href='https://github.com/datafeedr/datafeedr-api-docs'>Contribute to this Documentation</a>
   - <a href='http://www.datafeedr.com/pricing'>Purchase Datafeedr API Keys</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 

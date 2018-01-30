@@ -84,6 +84,21 @@ response = requests.post(url, json=data)
 print(response.json())
 ```
 
+```javascript
+var axios = require('axios');
+
+var url = "https://api.datafeedr.com/networks";
+
+var data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY"
+}
+
+axios.post(url, data).then(function (response) {
+    console.log(response.data)
+});
+```
+
 
 > Example Network Response
 
@@ -290,6 +305,23 @@ data = {
 
 response = requests.post(url, json=data)
 print(response.json())
+```
+
+```javascript
+var axios = require('axios');
+
+var url = "https://api.datafeedr.com/networks";
+
+var data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY",
+    "fields": ["name", "product_count"],
+    "source_ids": [6, 126]
+}
+
+axios.post(url, data).then(function (response) {
+    console.log(response.data)
+});
 ```
 
 

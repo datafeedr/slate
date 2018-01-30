@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - php
   - python
-  # - javascript: node
+  - javascript: node
 
 toc_footers:
   - <a href='https://github.com/datafeedr/datafeedr-api-docs'>Contribute to this Documentation</a>

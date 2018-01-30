@@ -90,6 +90,23 @@ response = requests.post(url, json=data)
 print(response.json())
 ```
 
+```javascript
+var axios = require('axios');
+
+var url = "https://api.datafeedr.com/zanox_merchant_ids";
+
+var data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY",
+    "connect_id": "87C407D6E75784A8D819",
+    "merchant_ids": [46548, 79142]
+}
+
+axios.post(url, data).then(function (response) {
+    console.log(response.data)
+});
+```
+
 
 > Zanox Merchant IDs Response
 

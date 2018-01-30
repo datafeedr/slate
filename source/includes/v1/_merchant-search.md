@@ -95,6 +95,30 @@ response = requests.post(url, json=data)
 print(response.json())
 ```
 
+```javascript
+var axios = require('axios');
+
+var url = "https://api.datafeedr.com/merchant_search";
+
+var data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY",
+    "query": [
+        "name LIKE magazines|=books",
+        "source LIKE coupons",
+        "product_count > 5"
+    ],
+    "sort": ["+name", "-product_count"],
+    "fields": ["name", "product_count", "source"],
+    "limit": 10,
+    "offset": 0
+}
+
+axios.post(url, data).then(function (response) {
+    console.log(response.data)
+});
+```
+
 > Example Merchant Search Response
 
 ```json

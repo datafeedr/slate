@@ -90,4 +90,22 @@ response = requests.post(url, json=data)
 print(response.json())
 ```
 
+```javascript
+var axios = require('axios');
+
+var url = "https://api.datafeedr.com/search";
+
+var data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY",
+    "query": [
+        "name LIKE rock climbing harness"
+    ]
+}
+
+axios.post(url, data).then(function (response) {
+    console.log(response.data)
+});
+```
+
 Here is an example of a simple product search Request which includes an **ACCESS ID** and an **ACCESS KEY** and a [`Query`](#query-object) Object containing one [Condition](#conditions).

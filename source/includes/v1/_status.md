@@ -87,6 +87,21 @@ response = requests.post(url, json=data)
 print(response.json())
 ```
 
+```javascript
+var axios = require('axios');
+
+var url = "https://api.datafeedr.com/status";
+
+var data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY"
+}
+
+axios.post(url, data).then(function (response) {
+    console.log(response.data)
+});
+```
+
 
 > Status Response
 

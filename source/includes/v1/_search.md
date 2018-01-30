@@ -220,6 +220,52 @@ response = requests.post(url, json=data)
 print(response.json())
 ```
 
+```javascript
+var axios = require('axios');
+
+var url = "https://api.datafeedr.com/search";
+
+var data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY",
+    "query": [
+        "any LIKE climbing women|woman",
+        "name LIKE harness",
+        "source LIKE avantlink|linkshare",
+        "price > 5000",
+        "price < 15000",
+        "merchant !LIKE Jet|Groupon",
+        "onsale = 1",
+        "image !EMPTY",
+        "currency = USD",
+        "brand LIKE mammut|'black diamond'|petzl",
+        "salediscount >= 15"
+    ],
+    "fields": [
+        "name",
+        "price",
+        "finalprice",
+        "merchant",
+        "source",
+        "brand",
+        "salediscount",
+        "url",
+        "currency",
+        "image"
+    ],
+    "price_groups": 3,
+    "limit": 10,
+    "offset": 0,
+    "sort": ["+finalprice"],
+    "exclude_duplicates": "merchant_id name|image",
+    "string_ids": false
+}
+
+axios.post(url, data).then(function (response) {
+    console.log(response.data)
+});
+```
+
 > Example Product Search Response
 
 ```json
@@ -608,6 +654,38 @@ data = {
 
 response = requests.post(url, json=data)
 print(response.json())
+```
+
+```javascript
+var axios = require('axios');
+
+var url = "https://api.datafeedr.com/search";
+
+var data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY",
+    "query": [
+        "source LIKE coupons",
+        "merchant LIKE mountain|outdoor|rei|sports",
+        "offerbegin >= 2018-01-01 00:00:00",
+        "offerend < 2018-02-01 00:00:00"
+    ],
+    "fields": [
+        "name",
+        "offerbegin",
+        "offerend",
+        "offercode",
+        "source",
+        "brand",
+        "url",
+        "merchant"
+      ],
+    "limit": 10
+}
+
+axios.post(url, data).then(function (response) {
+    console.log(response.data)
+});
 ```
 
 > Example Coupon Search Response

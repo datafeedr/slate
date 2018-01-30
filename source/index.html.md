@@ -4,8 +4,7 @@ title: Datafeedr API Documentation
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - php
-  # - ruby
-  # - python
+  - python
   # - javascript: node
 
 toc_footers:

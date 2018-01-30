@@ -73,4 +73,21 @@ if ($err) {
 }
 ```
 
+```python
+import requests
+
+url = "https://api.datafeedr.com/search"
+
+data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY",
+    "query": [
+        "name LIKE rock climbing harness"
+    ]
+}
+
+response = requests.post(url, json=data)
+print(response.json())
+```
+
 Here is an example of a simple product search Request which includes an **ACCESS ID** and an **ACCESS KEY** and a [`Query`](#query-object) Object containing one [Condition](#conditions).

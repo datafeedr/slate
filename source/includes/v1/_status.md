@@ -73,6 +73,20 @@ if ($err) {
 }
 ```
 
+```python
+import requests
+
+url = "https://api.datafeedr.com/status"
+
+data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY"
+}
+
+response = requests.post(url, json=data)
+print(response.json())
+```
+
 
 > Status Response
 

@@ -279,7 +279,7 @@ NOT | `!walking` | Exclude records matching "walking".
 NOT plus OR | <code>!dog&#124;cat</code> | Exclude records matching "dog" OR "cat".
 Starts With | `^black` | Return records where field starts with "black".
 Ends With | `white$` | Return records where field ends with "white".
-Quorum | `"dog cat bird"/2` | Returns records where at least 2 words match.
+Quorum | `"dog cat bird"/~2` | Returns records where at least 2 words match.
 
 ### Case Sensitivity
 

@@ -101,7 +101,7 @@ var data = {
     "query": [
         "name LIKE rock climbing harness"
     ]
-}
+};
 
 axios.post(url, data).then(function (response) {
     console.log(response.data)

@@ -259,7 +259,7 @@ var data = {
     "sort": ["+finalprice"],
     "exclude_duplicates": "merchant_id name|image",
     "string_ids": false
-}
+};
 
 axios.post(url, data).then(function (response) {
     console.log(response.data)
@@ -681,7 +681,7 @@ var data = {
         "merchant"
       ],
     "limit": 10
-}
+};
 
 axios.post(url, data).then(function (response) {
     console.log(response.data)

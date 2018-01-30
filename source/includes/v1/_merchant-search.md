@@ -112,7 +112,7 @@ var data = {
     "fields": ["name", "product_count", "source"],
     "limit": 10,
     "offset": 0
-}
+};
 
 axios.post(url, data).then(function (response) {
     console.log(response.data)

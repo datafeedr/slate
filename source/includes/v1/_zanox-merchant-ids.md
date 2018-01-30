@@ -100,7 +100,7 @@ var data = {
     "akey": "ACCESS_KEY",
     "connect_id": "87C407D6E75784A8D819",
     "merchant_ids": [46548, 79142]
-}
+};
 
 axios.post(url, data).then(function (response) {
     console.log(response.data)

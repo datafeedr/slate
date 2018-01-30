@@ -70,6 +70,20 @@ if ($err) {
 }
 ```
 
+```python
+import requests
+
+url = "https://api.datafeedr.com/networks"
+
+data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY"
+}
+
+response = requests.post(url, json=data)
+print(response.json())
+```
+
 
 > Example Network Response
 
@@ -232,6 +246,7 @@ $endpoint = "https://api.datafeedr.com/networks";
 $data = json_encode([
     'aid'        => 'ACCESS_ID',
     'akey'       => 'ACCESS_KEY',
+    'fields'     => ['name', 'product_count']
     'source_ids' => [6, 126]
 ]);
 
@@ -259,6 +274,22 @@ if ($err) {
 } else {
     echo $response;
 }
+```
+
+```python
+import requests
+
+url = "https://api.datafeedr.com/networks"
+
+data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY",
+    "fields": ["name", "product_count"],
+    "source_ids": [6, 126]
+}
+
+response = requests.post(url, json=data)
+print(response.json())
 ```
 
 

@@ -72,6 +72,29 @@ if ($err) {
 }
 ```
 
+```python
+import requests
+
+url = "https://api.datafeedr.com/merchant_search"
+
+data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY",
+    "query": [
+        "name LIKE magazines|=books",
+        "source LIKE coupons",
+        "product_count > 5"
+    ],
+    "sort": ["+name", "-product_count"],
+    "fields": ["name", "product_count", "source"],
+    "limit": 10,
+    "offset": 0
+}
+
+response = requests.post(url, json=data)
+print(response.json())
+```
+
 > Example Merchant Search Response
 
 ```json

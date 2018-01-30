@@ -69,6 +69,20 @@ if ($err) {
 }
 ```
 
+```python
+import requests
+
+url = "https://api.datafeedr.com/merchants"
+
+data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY"
+}
+
+response = requests.post(url, json=data)
+print(response.json())
+```
+
 
 > Example Merchant Response
 
@@ -257,6 +271,22 @@ if ($err) {
 } else {
     echo $response;
 }
+```
+
+```python
+import requests
+
+url = "https://api.datafeedr.com/merchants"
+
+data = {
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY",
+    "fields": ["name", "product_count", "source"],
+    "source_ids": [6, 126]
+}
+
+response = requests.post(url, json=data)
+print(response.json())
 ```
 
 

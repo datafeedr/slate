@@ -202,7 +202,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;php&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;php&quot;,&quot;python&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -215,6 +215,7 @@
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="php">php</a>
               <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="javascript">node</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -515,6 +516,21 @@
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'axios'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/search"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"aid"</span><span class="p">:</span> <span class="s2">"ACCESS_ID"</span><span class="p">,</span>
+    <span class="s2">"akey"</span><span class="p">:</span> <span class="s2">"ACCESS_KEY"</span><span class="p">,</span>
+    <span class="s2">"query"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"name LIKE rock climbing harness"</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">});</span>
 </code></pre>
 <p>Here is an example of a simple product search Request which includes an <strong>ACCESS ID</strong> and an <strong>ACCESS KEY</strong> and a <a href="#query-object"><code>Query</code></a> Object containing one <a href="#conditions">Condition</a>.</p>
 <h1 id='responses'>Responses</h1>
@@ -754,12 +770,12 @@ This Request is invalid.
 <tr>
 <td><code>source</code></td>
 <td>string</td>
-<td><strong>INT</strong></td>
+<td><strong>TEXT</strong></td>
 </tr>
 <tr>
 <td><code>source_id</code></td>
 <td>integer</td>
-<td><strong>TEXT</strong></td>
+<td><strong>INT</strong></td>
 </tr>
 <tr>
 <td><code>product_count</code></td>
@@ -1266,7 +1282,7 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 </tr>
 <tr>
 <td><code>plan_id</code></td>
-<td>string</td>
+<td>integer</td>
 <td>Your Datafeedr subscription plan ID.</td>
 </tr>
 <tr>
@@ -1349,6 +1365,18 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'axios'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/status"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"aid"</span><span class="p">:</span> <span class="s2">"ACCESS_ID"</span><span class="p">,</span>
+    <span class="s2">"akey"</span><span class="p">:</span> <span class="s2">"ACCESS_KEY"</span>
+<span class="p">}</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
 <p>Status Response</p>
@@ -1496,6 +1524,18 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'axios'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/networks"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"aid"</span><span class="p">:</span> <span class="s2">"ACCESS_ID"</span><span class="p">,</span>
+    <span class="s2">"akey"</span><span class="p">:</span> <span class="s2">"ACCESS_KEY"</span>
+<span class="p">}</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
 <p>Example Network Response</p>
@@ -1702,6 +1742,20 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'axios'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/networks"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"aid"</span><span class="p">:</span> <span class="s2">"ACCESS_ID"</span><span class="p">,</span>
+    <span class="s2">"akey"</span><span class="p">:</span> <span class="s2">"ACCESS_KEY"</span><span class="p">,</span>
+    <span class="s2">"fields"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"product_count"</span><span class="p">],</span>
+    <span class="s2">"source_ids"</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">126</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
 <p>Example Network Response</p>
@@ -1887,6 +1941,18 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'axios'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/merchants"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"aid"</span><span class="p">:</span> <span class="s2">"ACCESS_ID"</span><span class="p">,</span>
+    <span class="s2">"akey"</span><span class="p">:</span> <span class="s2">"ACCESS_KEY"</span>
+<span class="p">}</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
 <p>Example Merchant Response</p>
@@ -2091,6 +2157,20 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'axios'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/merchants"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"aid"</span><span class="p">:</span> <span class="s2">"ACCESS_ID"</span><span class="p">,</span>
+    <span class="s2">"akey"</span><span class="p">:</span> <span class="s2">"ACCESS_KEY"</span><span class="p">,</span>
+    <span class="s2">"fields"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"product_count"</span><span class="p">,</span> <span class="s2">"source"</span><span class="p">],</span>
+    <span class="s2">"source_ids"</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">126</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
 <p>Example Merchant Response</p>
@@ -2320,6 +2400,27 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'axios'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/merchant_search"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"aid"</span><span class="p">:</span> <span class="s2">"ACCESS_ID"</span><span class="p">,</span>
+    <span class="s2">"akey"</span><span class="p">:</span> <span class="s2">"ACCESS_KEY"</span><span class="p">,</span>
+    <span class="s2">"query"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"name LIKE magazines|=books"</span><span class="p">,</span>
+        <span class="s2">"source LIKE coupons"</span><span class="p">,</span>
+        <span class="s2">"product_count &gt; 5"</span>
+    <span class="p">],</span>
+    <span class="s2">"sort"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"+name"</span><span class="p">,</span> <span class="s2">"-product_count"</span><span class="p">],</span>
+    <span class="s2">"fields"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"product_count"</span><span class="p">,</span> <span class="s2">"source"</span><span class="p">],</span>
+    <span class="s2">"limit"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">"offset"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
 <p>Example Merchant Search Response</p>
@@ -2796,6 +2897,49 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'axios'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/search"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"aid"</span><span class="p">:</span> <span class="s2">"ACCESS_ID"</span><span class="p">,</span>
+    <span class="s2">"akey"</span><span class="p">:</span> <span class="s2">"ACCESS_KEY"</span><span class="p">,</span>
+    <span class="s2">"query"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"any LIKE climbing women|woman"</span><span class="p">,</span>
+        <span class="s2">"name LIKE harness"</span><span class="p">,</span>
+        <span class="s2">"source LIKE avantlink|linkshare"</span><span class="p">,</span>
+        <span class="s2">"price &gt; 5000"</span><span class="p">,</span>
+        <span class="s2">"price &lt; 15000"</span><span class="p">,</span>
+        <span class="s2">"merchant !LIKE Jet|Groupon"</span><span class="p">,</span>
+        <span class="s2">"onsale = 1"</span><span class="p">,</span>
+        <span class="s2">"image !EMPTY"</span><span class="p">,</span>
+        <span class="s2">"currency = USD"</span><span class="p">,</span>
+        <span class="s2">"brand LIKE mammut|'black diamond'|petzl"</span><span class="p">,</span>
+        <span class="s2">"salediscount &gt;= 15"</span>
+    <span class="p">],</span>
+    <span class="s2">"fields"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"name"</span><span class="p">,</span>
+        <span class="s2">"price"</span><span class="p">,</span>
+        <span class="s2">"finalprice"</span><span class="p">,</span>
+        <span class="s2">"merchant"</span><span class="p">,</span>
+        <span class="s2">"source"</span><span class="p">,</span>
+        <span class="s2">"brand"</span><span class="p">,</span>
+        <span class="s2">"salediscount"</span><span class="p">,</span>
+        <span class="s2">"url"</span><span class="p">,</span>
+        <span class="s2">"currency"</span><span class="p">,</span>
+        <span class="s2">"image"</span>
+    <span class="p">],</span>
+    <span class="s2">"price_groups"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">"limit"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">"offset"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">"sort"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"+finalprice"</span><span class="p">],</span>
+    <span class="s2">"exclude_duplicates"</span><span class="p">:</span> <span class="s2">"merchant_id name|image"</span><span class="p">,</span>
+    <span class="s2">"string_ids"</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
 <p>Example Product Search Response</p>
@@ -3254,6 +3398,35 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'axios'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/search"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"aid"</span><span class="p">:</span> <span class="s2">"ACCESS_ID"</span><span class="p">,</span>
+    <span class="s2">"akey"</span><span class="p">:</span> <span class="s2">"ACCESS_KEY"</span><span class="p">,</span>
+    <span class="s2">"query"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"source LIKE coupons"</span><span class="p">,</span>
+        <span class="s2">"merchant LIKE mountain|outdoor|rei|sports"</span><span class="p">,</span>
+        <span class="s2">"offerbegin &gt;= 2018-01-01 00:00:00"</span><span class="p">,</span>
+        <span class="s2">"offerend &lt; 2018-02-01 00:00:00"</span>
+    <span class="p">],</span>
+    <span class="s2">"fields"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"name"</span><span class="p">,</span>
+        <span class="s2">"offerbegin"</span><span class="p">,</span>
+        <span class="s2">"offerend"</span><span class="p">,</span>
+        <span class="s2">"offercode"</span><span class="p">,</span>
+        <span class="s2">"source"</span><span class="p">,</span>
+        <span class="s2">"brand"</span><span class="p">,</span>
+        <span class="s2">"url"</span><span class="p">,</span>
+        <span class="s2">"merchant"</span>
+      <span class="p">],</span>
+    <span class="s2">"limit"</span><span class="p">:</span> <span class="mi">10</span>
+<span class="p">}</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
 <p>Example Coupon Search Response</p>
@@ -3697,6 +3870,20 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'axios'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/zanox_merchant_ids"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"aid"</span><span class="p">:</span> <span class="s2">"ACCESS_ID"</span><span class="p">,</span>
+    <span class="s2">"akey"</span><span class="p">:</span> <span class="s2">"ACCESS_KEY"</span><span class="p">,</span>
+    <span class="s2">"connect_id"</span><span class="p">:</span> <span class="s2">"87C407D6E75784A8D819"</span><span class="p">,</span>
+    <span class="s2">"merchant_ids"</span><span class="p">:</span> <span class="p">[</span><span class="mi">46548</span><span class="p">,</span> <span class="mi">79142</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
 <p>Zanox Merchant IDs Response</p>
@@ -4024,6 +4211,7 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
                 <a href="#" data-language-name="shell">shell</a>
                 <a href="#" data-language-name="php">php</a>
                 <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="javascript">node</a>
           </div>
       </div>
     </div>

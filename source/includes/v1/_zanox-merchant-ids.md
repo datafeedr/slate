@@ -1,6 +1,6 @@
 # Zanox Merchant IDs
 
-The `zanox_merchant_ids` endpoint returns [`ZanoxMerchant`](#zanoxmerchant-properties) Objects which can be used to get your Zanox Affiliate ID.
+The `zanox_merchant_ids` endpoint returns [`ZanoxMerchant`](#zanoxmerchant-properties) Objects which can be used to get your Zanox Merchant IDs (`zmid`) which is the value you will use as your Zanox affiliate ID.
 
 
 
@@ -18,7 +18,7 @@ Property | Type | Description
 
 
 
-## Get Zanox affiliate ID
+## Get Zanox zmid
 
 > Zanox Merchant IDs Request
 
@@ -28,7 +28,7 @@ curl --request POST \
   --data '{
     "aid": "ACCESS_ID",
     "akey": "ACCESS_KEY",
-    "connect_id": "87C407D6E75784A8D819",
+    "connect_id": "ZANOX_CONNECTION_ID",
     "merchant_ids": [46548, 79142]
 }'
 ```
@@ -41,11 +41,8 @@ $endpoint = "https://api.datafeedr.com/zanox_merchant_ids";
 $data = json_encode([
     'aid'          => 'ACCESS_ID',
     'akey'         => 'ACCESS_KEY',
-    'connect_id'   => '87C407D6E75784A8D819',
-    'merchant_ids' => [
-        46548,
-        79142
-    ]
+    'connect_id'   => 'ZANOX_CONNECTION_ID',
+    'merchant_ids' => [46548, 79142]
 ]);
 
 $ch = curl_init($url);
@@ -69,7 +66,7 @@ url = "https://api.datafeedr.com/zanox_merchant_ids"
 data = {
     "aid": "ACCESS_ID",
     "akey": "ACCESS_KEY",
-    "connect_id": "87C407D6E75784A8D819",
+    "connect_id": "ZANOX_CONNECTION_ID",
     "merchant_ids": [46548, 79142]
 }
 
@@ -85,7 +82,7 @@ var url = "https://api.datafeedr.com/zanox_merchant_ids";
 var data = {
     "aid": "ACCESS_ID",
     "akey": "ACCESS_KEY",
-    "connect_id": "87C407D6E75784A8D819",
+    "connect_id": "ZANOX_CONNECTION_ID",
     "merchant_ids": [46548, 79142]
 };
 
@@ -141,7 +138,7 @@ Get the `zmid` values (ie. affiliate IDs) for specific Zanox merchants.
 
 Property | Value | Type | Required
 ---|---|---|---|---
-`merchant_ids` | Array of Datafeedr [`Merchant`](#merchant-properties) IDs. | `[12345,13524,...]` | Yes
+`merchant_ids` | Array of Datafeedr [`Merchant`](#merchant-properties) IDs. | `[12345, 13524,...]` | Yes
 `connect_id` | Your [Zanox Connection ID](https://datafeedrapi.helpscoutdocs.com/article/149-how-to-find-your-zanox-api-keys). | `string` | Yes
 
 

@@ -42,3 +42,17 @@ The `@@@` characters in the URL are replaced with the `zmid` value.
 
 See the [Get Zanox affiliate ID](#get-zanox-affiliate-id) section to learn how to get your Zanox `zmid` value to insert in your product URLs.
 
+
+
+## Performance Horizon Affiliate IDs
+
+Performance Horizon handles affiliate IDs differently than most other affiliate networks.
+
+Instead of providing a static affiliate ID that can simply be inserted into your URLs, an affiliate ID must be dynamically generated.
+
+You must get your Performance Horizon `camref` value for each Performance Horizon merchant.
+
+The `@@@` characters in the URL are replaced with the `camref` value.
+
+See the [Get Performance Horizon camref](#get-performance-horizon-camref) section to learn how to get your Performance Horizon `camref` value to insert in your product URLs.
+

@@ -529,6 +529,7 @@ Property | Type | Description
 `products` | array | Array of [`Product`](#product-properties) Objects.
 `networks` | array | Array of [`Network`](#network-properties) Objects with `product_count` property updated to reflect the number of products included from this network in the search results.
 `merchants` | array | Array of [`Merchant`](#merchant-properties) Objects with `product_count` property updated to reflect the number of products included from this merchant in the search results.
+`price_groups` | array | Array of [`PriceGroup`](#price-groups) Objects. (Only returned if `price_groups` is set in Request).
 `length` | integer | Number of products returned.
 `found_count` | integer | Total number of products matching the query.
 `result_count` | integer | Number of products that can be retrieved from the server.
@@ -538,11 +539,19 @@ Property | Type | Description
 `version` | string | The current version of the API.
 
 
+### Price Groups
 
+A `PriceGroup` Object will be returned if `price_groups` is set in the Request. If `price_groups` is set to 3, then an array of 3 `PriceGroup` Objects will be returned. A `PriceGroup`'s `min` and `max` values are calculated by equally distributing the range of prices (lowest to highest) of the returned results into 3 groups.
 
+Each `PriceGroup` will contain the minimum price and maximum price in the group and how many products fall between those 2 prices.
 
+A `PriceGroup` Object contains the following properties.
 
-
+Property | Type | Description
+---|---|---
+`min` | integer | Minimum price in this group.
+`max` | integer | Maximum price in this group.
+`count` | integer | Number of products in this group.
 
 
 

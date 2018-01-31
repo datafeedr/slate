@@ -30,6 +30,7 @@ If you need help finding your affiliate IDs, check [our documentation](https://d
 
 
 
+
 ## Zanox Affiliate IDs
 
 Zanox handles affiliate IDs differently than most other affiliate networks.
@@ -41,6 +42,7 @@ You must get your Zanox `zmid` value for each Zanox merchant.
 The `@@@` characters in the URL are replaced with the `zmid` value.
 
 See the [Get Zanox affiliate ID](#get-zanox-affiliate-id) section to learn how to get your Zanox `zmid` value to insert in your product URLs.
+
 
 
 

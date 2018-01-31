@@ -3196,6 +3196,11 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 <td>Array of <a href="#merchant-properties"><code>Merchant</code></a> Objects with <code>product_count</code> property updated to reflect the number of products included from this merchant in the search results.</td>
 </tr>
 <tr>
+<td><code>price_groups</code></td>
+<td>array</td>
+<td>Array of <a href="#price-groups"><code>PriceGroup</code></a> Objects. (Only returned if <code>price_groups</code> is set in Request).</td>
+</tr>
+<tr>
 <td><code>length</code></td>
 <td>integer</td>
 <td>Number of products returned.</td>
@@ -3229,6 +3234,36 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 <td><code>version</code></td>
 <td>string</td>
 <td>The current version of the API.</td>
+</tr>
+</tbody></table>
+<h3 id='price-groups'>Price Groups</h3>
+<p>A <code>PriceGroup</code> Object will be returned if <code>price_groups</code> is set in the Request. If <code>price_groups</code> is set to 3, then an array of 3 <code>PriceGroup</code> Objects will be returned. A <code>PriceGroup</code>&#39;s <code>min</code> and <code>max</code> values are calculated by equally distributing the range of prices (lowest to highest) of the returned results into 3 groups.</p>
+
+<p>Each <code>PriceGroup</code> will contain the minimum price and maximum price in the group and how many products fall between those 2 prices.</p>
+
+<p>A <code>PriceGroup</code> Object contains the following properties.</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>min</code></td>
+<td>integer</td>
+<td>Minimum price in this group.</td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td>integer</td>
+<td>Maximum price in this group.</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>integer</td>
+<td>Number of products in this group.</td>
 </tr>
 </tbody></table>
 <h2 id='search-coupons'>Search coupons</h2>

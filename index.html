@@ -374,6 +374,17 @@
               </ul>
           </li>
           <li>
+            <a href="#amazon-item-search" class="toc-h1 toc-link" data-title="Amazon Item Search">Amazon Item Search</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#amazon-product-properties" class="toc-h2 toc-link" data-title="Amazon Product properties">Amazon Product properties</a>
+                  </li>
+                  <li>
+                    <a href="#search-amazon-products" class="toc-h2 toc-link" data-title="Search Amazon products">Search Amazon products</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#zanox-merchant-ids" class="toc-h1 toc-link" data-title="Zanox Merchant IDs">Zanox Merchant IDs</a>
               <ul class="toc-list-h2">
                   <li>
@@ -3699,6 +3710,536 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 <td><code>duplicates_count</code></td>
 <td>integer</td>
 <td>Number of products excluded due to the <code>exclude_duplicates</code> filter.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>object</td>
+<td><a href="#status-properties"><code>Status</code></a> Object.</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>integer</td>
+<td>Time spent processing the API request (in milliseconds).</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>string</td>
+<td>The current version of the API.</td>
+</tr>
+</tbody></table>
+<h1 id='amazon-item-search'>Amazon Item Search</h1>
+<p>The <code>amazon_item_search</code> endpoint returns product data from Amazon matching your search.</p>
+<h2 id='amazon-product-properties'>Amazon Product properties</h2>
+<p>The Amazon <code>Product</code> Object contains information about a single Product.</p>
+<h3 id='amazon-product-object-properties'>Amazon <code>Product</code> Object Properties</h3>
+<p>The following properties can be found in the Amazon <code>Product</code> Object.</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>_id</code></td>
+<td>integer</td>
+<td>Product ID (different than ASIN).</td>
+</tr>
+<tr>
+<td><code>asin</code></td>
+<td>string</td>
+<td><a href="https://en.wikipedia.org/wiki/Amazon_Standard_Identification_Number">Amazon Standard Identification Number</a></td>
+</tr>
+<tr>
+<td><code>brand</code></td>
+<td>string</td>
+<td>Product brand.</td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td>string</td>
+<td>Category field(s) product is in.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>string</td>
+<td>Three letter ISO-4217 currency code.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>Product description.</td>
+</tr>
+<tr>
+<td><code>finalprice</code></td>
+<td>integer</td>
+<td>Lowest price of product (either sale or regular price) in least valued currency units (e.g cents).</td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>string</td>
+<td>Product image URL.</td>
+</tr>
+<tr>
+<td><code>merchant_id</code></td>
+<td>integer</td>
+<td>Merchant ID.</td>
+</tr>
+<tr>
+<td><code>merchant</code></td>
+<td>string</td>
+<td>Merchant name.</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td>string</td>
+<td>Model number.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Product name.</td>
+</tr>
+<tr>
+<td><code>onsale</code></td>
+<td>integer</td>
+<td>Indicates if product is on sale. 0=No, 1=Yes.</td>
+</tr>
+<tr>
+<td><code>price</code></td>
+<td>integer</td>
+<td>Price of product in least valued currency units (e.g cents).</td>
+</tr>
+<tr>
+<td><code>salediscount</code></td>
+<td>integer</td>
+<td>The percentage that price has been discounted in whole numbers.</td>
+</tr>
+<tr>
+<td><code>source_id</code></td>
+<td>integer</td>
+<td>Affiliate network ID.</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td>string</td>
+<td>Affiliate network name.</td>
+</tr>
+<tr>
+<td><code>thumbnail</code></td>
+<td>string</td>
+<td>Product image thumbnail.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td>Affiliate URL.</td>
+</tr>
+</tbody></table>
+<h2 id='search-amazon-products'>Search Amazon products</h2>
+<blockquote>
+<p>Example Amazon Product Search Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://api.datafeedr.com/amazon_item_search <span class="se">\</span>
+  --data <span class="s1">'{
+    "aid": "ACCESS_ID",
+    "akey": "ACCESS_KEY",
+    "AssociateTag": "AMAZON_TRACKING_ID",
+    "AWSAccessKeyId": "AMAZON_ACCESS_KEY",
+    "AWSSecretKey": "AMAZON_SECRET_KEY",
+    "SearchIndex": "SportingGoods",
+    "Keywords": "osprey farpoint 55"
+}'</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$endpoint</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/amazon_item_search"</span><span class="p">;</span>
+
+<span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span> <span class="p">[</span>
+    <span class="s1">'aid'</span>            <span class="o">=&gt;</span> <span class="s1">'ACCESS_ID'</span><span class="p">,</span>
+    <span class="s1">'akey'</span>           <span class="o">=&gt;</span> <span class="s1">'ACCESS_KEY'</span><span class="p">,</span>
+    <span class="s1">'AssociateTag'</span>   <span class="o">=&gt;</span> <span class="s1">'AMAZON_TRACKING_ID'</span><span class="p">,</span>
+    <span class="s1">'AWSAccessKeyId'</span> <span class="o">=&gt;</span> <span class="s1">'AMAZON_ACCESS_KEY'</span><span class="p">,</span>
+    <span class="s1">'AWSSecretKey'</span>   <span class="o">=&gt;</span> <span class="s1">'AMAZON_SECRET_KEY'</span><span class="p">,</span>
+    <span class="s1">'SearchIndex'</span>    <span class="o">=&gt;</span> <span class="s1">'SportingGoods'</span><span class="p">,</span>
+    <span class="s1">'Keywords'</span>       <span class="o">=&gt;</span> <span class="s1">'osprey farpoint 55'</span>
+<span class="p">]</span> <span class="p">);</span>
+
+<span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="p">[</span>
+    <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">CURLOPT_HTTPHEADER</span>     <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'Content-Type: application/json'</span><span class="p">],</span>
+    <span class="nx">CURLOPT_POSTFIELDS</span>     <span class="o">=&gt;</span> <span class="nv">$data</span>
+<span class="p">]);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="nb">print_r</span><span class="p">(</span><span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="p">));</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.datafeedr.com/amazon_item_search"</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"aid"</span><span class="p">:</span> <span class="s">"ACCESS_ID"</span><span class="p">,</span>
+    <span class="s">"akey"</span><span class="p">:</span> <span class="s">"ACCESS_KEY"</span><span class="p">,</span>
+    <span class="s">"AssociateTag"</span><span class="p">:</span> <span class="s">"AMAZON_TRACKING_ID"</span><span class="p">,</span>
+    <span class="s">"AWSAccessKeyId"</span><span class="p">:</span> <span class="s">"AMAZON_ACCESS_KEY"</span><span class="p">,</span>
+    <span class="s">"AWSSecretKey"</span><span class="p">:</span> <span class="s">"AMAZON_SECRET_KEY"</span><span class="p">,</span>
+    <span class="s">"SearchIndex"</span><span class="p">:</span> <span class="s">"SportingGoods"</span><span class="p">,</span>
+    <span class="s">"Keywords"</span><span class="p">:</span> <span class="s">"osprey farpoint 55"</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'axios'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/amazon_item_search"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"aid"</span><span class="p">:</span> <span class="s2">"ACCESS_ID"</span><span class="p">,</span>
+    <span class="s2">"akey"</span><span class="p">:</span> <span class="s2">"ACCESS_KEY"</span><span class="p">,</span>
+    <span class="s2">"AssociateTag"</span><span class="p">:</span> <span class="s2">"AMAZON_TRACKING_ID"</span><span class="p">,</span>
+    <span class="s2">"AWSAccessKeyId"</span><span class="p">:</span> <span class="s2">"AMAZON_ACCESS_KEY"</span><span class="p">,</span>
+    <span class="s2">"AWSSecretKey"</span><span class="p">:</span> <span class="s2">"AMAZON_SECRET_KEY"</span><span class="p">,</span>
+    <span class="s2">"SearchIndex"</span><span class="p">:</span> <span class="s2">"SportingGoods"</span><span class="p">,</span>
+    <span class="s2">"Keywords"</span><span class="p">:</span> <span class="s2">"osprey farpoint 55"</span>
+<span class="p">};</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Example Amazon Product Search Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"total_found"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"network_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">173</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"plan_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10300</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">190</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"max_total"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"merchant_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">58256</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"max_requests"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bill_day"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"request_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">9125</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"product_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">441097498</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"max_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"found_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clothing, Shoes &amp; Jewelry &gt; Departments &gt; Men &gt; Shops; Clothing, Shoes &amp; Jewelry &gt; Departments &gt; Luggage &amp; Travel Gear &gt; Backpacks &gt; Casual Daypacks"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B019UTHYNC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey Farpoint 55 Travel Backpack"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"suid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B019UTHYNC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.amazon.com/Osprey-Farpoint-55-Travel-Backpack/dp/B019UTHYNC?SubscriptionId=AKIAJLHNSP4DNCDHN5HQ&amp;tag=@@@&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B019UTHYNC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">16995</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"finalprice"</span><span class="p">:</span><span class="w"> </span><span class="mi">16995</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">777758772250847</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41i5ig38EJL.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salediscount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"onsale"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000291-P"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41i5ig38EJL._SL160_.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey's Far point 55 is the perfect companion for a long weekend. Feel free to add an extra sweater and a pair of waterproof boots; this pack is designed to handle loads up to 50 pounds. The Light Wire frame suspension transfers the load from harness to hip belt. A mesh back panel improves ventilation and the mesh on the harness and hip belt reduces chafing under load. The entire suspension stows away under a zippered panel creating a sleek silhouette for transport. Unzip the lockable sliders to access the main compartment. Inside there's a mesh pocket for small items. Dual compression straps keep cargo from shifting during transit. Outside you'll find a zippered front panel slash pocket to keep you organized and sewn attachment points to lash on extra gear. No matter how much you choose to carry, dual compression straps stabilize the load. The main Far point 55 pack comes with a detachable Far point daypack to carry the essential for a hike in the hills or an excursion downtown."</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clothing, Shoes &amp; Jewelry &gt; Departments &gt; Men &gt; Shops; Clothing, Shoes &amp; Jewelry &gt; Departments &gt; Luggage &amp; Travel Gear &gt; Backpacks &gt; Casual Daypacks"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B00XN1T1NK"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey Men's Atmos 50 AG Backpacks"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"suid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B00XN1T1NK"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.amazon.com/Osprey-Mens-Atmos-50-Backpacks/dp/B00XN1T1NK?SubscriptionId=AKIAJLHNSP4DNCDHN5HQ&amp;tag=@@@&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B00XN1T1NK"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">13800</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"finalprice"</span><span class="p">:</span><span class="w"> </span><span class="mi">13800</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">777753704914444</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41mmJZPmFkL.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salediscount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"onsale"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"015250-705-3-LG-saParent"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41mmJZPmFkL._SL160_.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEATURES of the Osprey Atmos 50 AG Pack Floating, extendable top lid can be removed to save weight FlapJacket provides compression and protection for the main pack when the lid is removed Dual ice tool loops Removable sleeping pad straps provide secure gear attachment when needed Dual zippered front panel pockets provide quick access storage Adjustable harness allows you to easily adjust the torso length Compression straps stabilize pack loads Stow-on-the-Go trekking pole attachment makes for quick and easy storage Fit-on-the-Fly hipbelt extends hipbelt by 5 inches, giving you a custom fit Suspended mesh hip wrap for load transfer and comfort Anti-gravity backpanel made of lightweight mesh provides comfort and ventilation Internal compression Internal reservoir sleeve"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sports &amp; Outdoors &gt; Outdoor Recreation Features; Clothing, Shoes &amp; Jewelry &gt; Departments &gt; Luggage &amp; Travel Gear &gt; Gym Bags"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B071YK4317"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OSPREY Porter 46 Travel"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"suid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B071YK4317"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.amazon.com/Osprey-10001115-OSPREY-Porter-Travel/dp/B071YK4317?SubscriptionId=AKIAJLHNSP4DNCDHN5HQ&amp;tag=@@@&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B071YK4317"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">13000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"finalprice"</span><span class="p">:</span><span class="w"> </span><span class="mi">13000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">777764025911987</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41xWr+OiEeL.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salediscount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"onsale"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10001115"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41xWr+OiEeL._SL160_.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"With padded sidewalls, convenient organization and a substantial suspension for backpack-style carry that disappears when checking bags, the Porter Series has set the standard for deluxe duffels. This season brings a relocated and dedicated zippered laptop and tablet pocket-and functional storage options for items both big and small-with multiple access points. When a duffel isn't enough and backpacking bags are too much, the Porter is the answer."</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sports &amp; Outdoors &gt; Categories &gt; Outdoor Recreation &gt; Camping &amp; Hiking &gt; Backpacks &amp; Bags; Sports &amp; Outdoors &gt; Outdoor Recreation Features"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B019UTHQEY"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey Farpoint 40 Travel Backpack"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"suid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B019UTHQEY"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.amazon.com/Osprey-Farpoint-40-Travel-Backpack/dp/B019UTHQEY?SubscriptionId=AKIAJLHNSP4DNCDHN5HQ&amp;tag=@@@&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B019UTHQEY"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">14584</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"finalprice"</span><span class="p">:</span><span class="w"> </span><span class="mi">14584</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">777701271729346</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/411shEqQcWL.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salediscount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"onsale"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000297-P"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/411shEqQcWL._SL160_.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey's far point 40 is perfect for a weekend getaway in the city or the wilderness. The lightwood frame suspension transfers the load from harness to hip belt. A mesh back panel improves ventilation and the mesh on the harness and hip belt reduces chafing under load. The entire suspension stows away under a zippered panel creating a sleek silhouette for transport. Unzip the lockable sliders to access the main compartment. Inside there's a mesh pocket for small items. Dual compression straps keep cargo from shifting during Transit. Outside you'll find a zippered front panel slash pocket to keep you organized and sewn attachment points to lash on extra gear. No matter how much you choose to carry, dual compression straps stabilize the load. The padded top and side handles give you purchase when you need to toss the far point 40 into the back of the bus."</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sports &amp; Outdoors &gt; Categories &gt; Outdoor Recreation &gt; Camping &amp; Hiking &gt; Backpacks &amp; Bags &gt; Backpacking Packs &gt; Hiking Daypacks; Sports &amp; Outdoors &gt; Outdoor Recreation Features"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B019UTI40Y"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey Packs Farpoint 70 Travel Backpack"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"suid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B019UTI40Y"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.amazon.com/Osprey-Packs-Farpoint-Travel-Backpack/dp/B019UTI40Y?SubscriptionId=AKIAJLHNSP4DNCDHN5HQ&amp;tag=@@@&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B019UTI40Y"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">18771</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"finalprice"</span><span class="p">:</span><span class="w"> </span><span class="mi">18771</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">777703788917358</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/4150EVVTVIL.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salediscount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"onsale"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000285-P"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/4150EVVTVIL._SL160_.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"From the streets of Buenos Aires to the foothills of the Andes, Osprey’s Farpoint 70 is ready for anything. Go ahead and fill it up with heavy mountain gear. The LightWire frame suspension transfers the load from harness to hipbelt. A mesh backpanel improves ventilation and the mesh on the harness and hipbelt reduces chafing under load. The entire suspension stows away under a zippered panel creating a sleek silhouette for transport. Unzip the lockable sliders to access the main compartment. Inside there’s a mesh pocket for small items. Dual compression straps keep cargo from shifting during transit. Outside you’ll find a zippered front panel slash pocket to keep you organized and sewn attachment points to lash on extra gear. No matter how much you choose to carry, StraightJacket compression straps stabilize the load. The main Farpoint 70 pack comes with a detachable Farpoint day pack, perfect for use on trips to the local market or to recon your route from the high ridge above base camp."</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electronics &gt; Categories &gt; Computers &amp; Accessories &gt; Laptop Accessories &gt; Bags, Cases &amp; Sleeves &gt; Backpacks"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B019UTI8W8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey Packs Farpoint 80 Travel Backpack"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"suid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B019UTI8W8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.amazon.com/Osprey-Packs-Farpoint-Travel-Backpack/dp/B019UTI8W8?SubscriptionId=AKIAJLHNSP4DNCDHN5HQ&amp;tag=@@@&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B019UTI8W8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">14000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"finalprice"</span><span class="p">:</span><span class="w"> </span><span class="mi">14000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">777772448139997</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/51I9ltXCZOL.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salediscount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"onsale"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000279-P"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/51I9ltXCZOL._SL160_.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey's far point 80 is the right size for a long trip when you need one pack to transport everything from the airport to the back and beyond. Go ahead and fill it up. The lightwood frame suspension transfers the load from harness to hip belt. A mesh back panel improves ventilation and the mesh on the harness and hip belt reduces chafing under load. The entire suspension stows away under a zippered panel creating a sleek silhouette for transport. Unzip the lockable sliders to access the main compartment. Inside there's a mesh pocket for small items. A compartment with floating divider allows separate storage options and dual compression straps keep cargo from shifting during Transit. Outside the pack, you'll find a zippered front panel slash pocket to keep your organized and sewn attachment points to add extra gear. No matter how much you choose to carry, straightjacket compression straps stabilize the load. There are also loops to anchor an optional osprey day Lite day pack if you would like the convenience of a small satellite pack for short forays."</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sports &amp; Outdoors &gt; Categories &gt; Outdoor Recreation &gt; Camping &amp; Hiking &gt; Backpacks &amp; Bags &gt; Backpacking Packs &gt; Internal Frame Backpacks; Sports &amp; Outdoors &gt; Outdoor Recreation Features"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B017P6F3NU"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey Women's Aura 65 AG Backpacks"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"suid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B017P6F3NU"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.amazon.com/Osprey-Womens-Aura-65-Backpacks/dp/B017P6F3NU?SubscriptionId=AKIAJLHNSP4DNCDHN5HQ&amp;tag=@@@&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B017P6F3NU"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">13995</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"finalprice"</span><span class="p">:</span><span class="w"> </span><span class="mi">13995</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">777711206462598</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salediscount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"onsale"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"025265-706-3-WM"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEATURES of the Osprey Women's Aura 65 AG Pack Adjustable harness Compression straps Dual zippered front panel pockets Fit-on-the-Fly hipbelt FlapJacket Internal compression Internal reservoir sleeve Removable floating top lid Removable sleeping pad straps Sleeping bag compartment Stow-on-the-Go trekking pole attachment Tool attachment"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sports &amp; Outdoors &gt; Categories &gt; Outdoor Recreation &gt; Camping &amp; Hiking &gt; Backpacks &amp; Bags &gt; Backpacking Packs &gt; Hydration Packs; Sports &amp; Outdoors &gt; Outdoor Recreation Features"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B073QQR4C1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey Packs Fairview 40 Travel Backpack"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"suid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B073QQR4C1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.amazon.com/Osprey-Packs-Fairview-Travel-Backpack/dp/B073QQR4C1?SubscriptionId=AKIAJLHNSP4DNCDHN5HQ&amp;tag=@@@&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B073QQR4C1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">14284</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"finalprice"</span><span class="p">:</span><span class="w"> </span><span class="mi">14284</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">777713351217328</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41rtJQfnanL.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salediscount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"onsale"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10001133"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41rtJQfnanL._SL160_.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KEY FEATURES Traditional backpack construction helps you support and carry the heaviest loads Stowaway Harness and Hipbelt can be zipped away when not in use to prevent snags and hangups Lightweight 210D Nylon Ripstop construction doesnt compromise on durability thanks to 600D Packcloth reinforcement in high wear areas The Osprey Fairview 40 Womens Bag is how you bring backcountry tech on every adventure you go on even the ones that never leave the city The LightWire? frame supports and distributes just like your trail pack would and the Atilon Foam harness and hipbelt keep you comfortable even under heavy loads But when its time to turn your bag over to the baggage handlers at the airport or if you just want a more standard looking piece of luggage simply zip shut the back panel for a sleek snag free carrying option SPECSVolume Liters 40"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clothing, Shoes &amp; Jewelry &gt; Departments &gt; Luggage &amp; Travel Gear &gt; Backpacks"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B00U3N8NAI"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey UltraLight Raincover"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"suid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B00U3N8NAI"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.amazon.com/Osprey-234102-514-1-LG-P-UltraLight-Raincover/dp/B00U3N8NAI?SubscriptionId=AKIAJLHNSP4DNCDHN5HQ&amp;tag=@@@&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B00U3N8NAI"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">2400</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"finalprice"</span><span class="p">:</span><span class="w"> </span><span class="mi">2400</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">777760229864481</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/51qQRM7RKnL.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salediscount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"onsale"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234102-514-1-LG-P"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"htmldescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Features:&lt;br /&gt;&lt;ul&gt;&lt;li&gt;Osprey raincover&lt;/li&gt;&lt;li&gt;Designed to protect 75-110 litre pack&lt;/li&gt;&lt;li&gt;Crafted with a fully taped lightweight fabric&lt;/li&gt;&lt;li&gt;Packs down into its own stuffsack&lt;/li&gt;&lt;li&gt;Reflective graphic printing&lt;/li&gt;&lt;li&gt;&lt;b&gt;Volume Range:&lt;/b&gt; 75-110 litres&lt;/li&gt;&lt;li&gt;&lt;b&gt;Weight:&lt;/b&gt; 0.1kg&lt;/li&gt;&lt;li&gt;Pack is securely locked into place with a lightweight wrap around cinch strap and secure hip belt and harness attachment&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/51qQRM7RKnL._SL160_.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Features:</span><span class="se">\n</span><span class="s2">Osprey raincover</span><span class="se">\n</span><span class="s2">Designed to protect 75-110 litre pack</span><span class="se">\n</span><span class="s2">Crafted with a fully taped lightweight fabric</span><span class="se">\n</span><span class="s2">Packs down into its own stuffsack</span><span class="se">\n</span><span class="s2">Reflective graphic printing</span><span class="se">\n</span><span class="s2">Volume Range: 75-110 litres</span><span class="se">\n</span><span class="s2">Weight: 0.1kg</span><span class="se">\n</span><span class="s2">Pack is securely locked into place with a lightweight wrap around cinch strap and secure hip belt and harness attachment"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clothing, Shoes &amp; Jewelry &gt; Departments &gt; Luggage &amp; Travel Gear &gt; Gym Bags &gt; Sports Duffels"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B00OKE6GEQ"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey Porter 65 Travel Duffel Bag"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"merchant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"suid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B00OKE6GEQ"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.amazon.com/Osprey-Porter-Travel-Duffel-Bag/dp/B00OKE6GEQ?SubscriptionId=AKIAJLHNSP4DNCDHN5HQ&amp;tag=@@@&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B00OKE6GEQ"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Osprey"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"finalprice"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">777706568763210</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon United States"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31P2Dh6D1gL.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salediscount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"onsale"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877257037116-PARENT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31P2Dh6D1gL._SL160_.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"With comfortable shoulder straps and waist belt that quickly tuck away when not needed, the Osprey Porter 65 conversion pack effortlessly distills the essence of a travel pack into its lightest, cleanest form for travelers who prefer to keep things simple. Updated with better organization features and a padded laptop compartment."</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">179</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST https://api.datafeedr.com/amazon_item_search</code></p>
+
+<aside class="notice">
+This request does require your <code>AWSSecretKey</code> which is used to sign the request. We do not store your key in any way.
+</aside>
+<h3 id='request-properties'>Request Properties</h3>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>AssociateTag</code></td>
+<td><a href="https://docs.aws.amazon.com/AWSECommerceService/latest/DG/CommonRequestParameters.html">More information</a></td>
+<td><code>string</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>AWSAccessKeyId</code></td>
+<td><a href="https://docs.aws.amazon.com/AWSECommerceService/latest/DG/CommonRequestParameters.html">More information</a></td>
+<td><code>string</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>AWSSecretKey</code></td>
+<td><a href="https://docs.aws.amazon.com/AWSECommerceService/latest/DG/ViewingCredentials.html">More information</a></td>
+<td><code>string</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Search Parameter</td>
+<td>At least one <a href="https://docs.aws.amazon.com/AWSECommerceService/latest/DG/ItemSearch.html#ItemSearch-rp">search parameter</a>.</td>
+<td><code>string</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>SearchIndex</code></td>
+<td><a href="https://docs.aws.amazon.com/AWSECommerceService/latest/DG/localevalues.html">More information</a></td>
+<td><code>string</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>ItemPage</code></td>
+<td>Offset (for paginating through results). Default: 1</td>
+<td><code>integer</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>Locale</code></td>
+<td><code>CA</code> <code>CN</code> <code>DE</code> <code>ES</code> <code>FR</code> <code>IT</code> <code>JP</code> <code>UK</code> or <code>US</code>. Default: <code>US</code></td>
+<td><code>string</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>Sort</code></td>
+<td>One of the following <a href="https://docs.aws.amazon.com/AWSECommerceService/latest/DG/APPNDX_SortValuesArticle.html">sort values</a></td>
+<td><code>string</code></td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='response-properties'>Response Properties</h3>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>products</code></td>
+<td>array</td>
+<td>Array of Amazon <a href="#amazon-product-properties"><code>Product</code></a> Objects.</td>
+</tr>
+<tr>
+<td><code>found_count</code></td>
+<td>integer</td>
+<td>Total number of products matching the query.</td>
+</tr>
+<tr>
+<td><code>result_count</code></td>
+<td>integer</td>
+<td>Number of products that can be retrieved from the server.</td>
 </tr>
 <tr>
 <td><code>status</code></td>

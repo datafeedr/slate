@@ -28,6 +28,7 @@ includes:
   - v1/_merchants
   - v1/_merchant-search
   - v1/_search
+  - v1/_amazon
   - v1/_zanox-merchant-ids
   - v1/_performancehorizon-campaigns
   - v1/_error-codes

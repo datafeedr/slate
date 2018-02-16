@@ -37,7 +37,7 @@ curl --request POST \
 ```php
 <?php
 
-$endpoint = "https://api.datafeedr.com/networks";
+$url = "https://api.datafeedr.com/networks";
 
 $data = json_encode([
     'aid'  => 'ACCESS_ID',
@@ -243,7 +243,7 @@ curl --request POST \
 ```php
 <?php
 
-$endpoint = "https://api.datafeedr.com/networks";
+$url = "https://api.datafeedr.com/networks";
 
 $data = json_encode([
     'aid'        => 'ACCESS_ID',

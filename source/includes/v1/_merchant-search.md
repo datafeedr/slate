@@ -30,7 +30,7 @@ curl --request POST \
 ```php
 <?php
 
-$endpoint = "https://api.datafeedr.com/merchant_search";
+$url = "https://api.datafeedr.com/merchant_search";
 
 $data = json_encode([
     'aid'    => 'ACCESS_ID',

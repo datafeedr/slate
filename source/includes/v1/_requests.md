@@ -37,7 +37,7 @@ curl --request POST \
 ```php
 <?php
 
-$endpoint = "https://api.datafeedr.com/search";
+$url = "https://api.datafeedr.com/search";
 
 $data = json_encode([
     'aid'   => 'ACCESS_ID',

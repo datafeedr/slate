@@ -58,7 +58,7 @@ curl --request POST \
 ```php
 <?php
 
-$endpoint = "https://api.datafeedr.com/amazon_item_search";
+$url = "https://api.datafeedr.com/amazon_item_search";
 
 $data = json_encode( [
     'aid'            => 'ACCESS_ID',

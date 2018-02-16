@@ -40,7 +40,7 @@ curl --request POST \
 ```php
 <?php
 
-$endpoint = "https://api.datafeedr.com/status";
+$url = "https://api.datafeedr.com/status";
 
 $data = json_encode([
     'aid'  => 'ACCESS_ID',

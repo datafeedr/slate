@@ -36,7 +36,7 @@ curl --request POST \
 ```php
 <?php
 
-$endpoint = "https://api.datafeedr.com/zanox_merchant_ids";
+$url = "https://api.datafeedr.com/zanox_merchant_ids";
 
 $data = json_encode([
     'aid'          => 'ACCESS_ID',

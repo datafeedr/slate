@@ -37,7 +37,7 @@ curl --request POST \
 ```php
 <?php
 
-$endpoint = "https://api.datafeedr.com/performancehorizon_campaigns";
+$url = "https://api.datafeedr.com/performancehorizon_campaigns";
 
 $data = json_encode([
     'aid'             => 'ACCESS_ID',

@@ -99,7 +99,7 @@ axios.post(url, data).then(function (response) {
 ```
 
 
-> Zanox Merchant IDs Response
+> Partnerize Campaign Response
 
 ```json
 {

@@ -291,7 +291,7 @@
                     <a href="#zanox-affiliate-ids" class="toc-h2 toc-link" data-title="Zanox Affiliate IDs">Zanox Affiliate IDs</a>
                   </li>
                   <li>
-                    <a href="#performance-horizon-affiliate-ids" class="toc-h2 toc-link" data-title="Performance Horizon Affiliate IDs">Performance Horizon Affiliate IDs</a>
+                    <a href="#partnerize-affiliate-ids" class="toc-h2 toc-link" data-title="Partnerize Affiliate IDs">Partnerize Affiliate IDs</a>
                   </li>
               </ul>
           </li>
@@ -396,13 +396,13 @@
               </ul>
           </li>
           <li>
-            <a href="#performance-horizon-camref" class="toc-h1 toc-link" data-title="Performance Horizon Camref">Performance Horizon Camref</a>
+            <a href="#partnerize-camref" class="toc-h1 toc-link" data-title="Partnerize Camref">Partnerize Camref</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#performancehorizoncampaign-properties" class="toc-h2 toc-link" data-title="PerformanceHorizonCampaign Properties">PerformanceHorizonCampaign Properties</a>
                   </li>
                   <li>
-                    <a href="#get-performance-horizon-camref" class="toc-h2 toc-link" data-title="Get Performance Horizon camref">Get Performance Horizon camref</a>
+                    <a href="#get-partnerize-camref" class="toc-h2 toc-link" data-title="Get Partnerize camref">Get Partnerize camref</a>
                   </li>
               </ul>
           </li>
@@ -666,7 +666,7 @@
 </tr>
 <tr>
 <td>7</td>
-<td>External APIs (Performance Horizon, Zanox) error.</td>
+<td>External APIs (Partnerize, Zanox) error.</td>
 </tr>
 <tr>
 <td>9</td>
@@ -1237,16 +1237,16 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 <p>The <code>@@@</code> characters in the URL are replaced with the <code>zmid</code> value.</p>
 
 <p>See the <a href="#get-zanox-affiliate-id">Get Zanox affiliate ID</a> section to learn how to get your Zanox <code>zmid</code> value to insert in your product URLs.</p>
-<h2 id='performance-horizon-affiliate-ids'>Performance Horizon Affiliate IDs</h2>
-<p>Performance Horizon handles affiliate IDs differently than most other affiliate networks.</p>
+<h2 id='partnerize-affiliate-ids'>Partnerize Affiliate IDs</h2>
+<p>Partnerize (formally Performance Horizon) handles affiliate IDs differently than most other affiliate networks.</p>
 
 <p>Instead of providing a static affiliate ID that can simply be inserted into your URLs, an affiliate ID must be dynamically generated.</p>
 
-<p>You must get your Performance Horizon <code>camref</code> value for each Performance Horizon merchant.</p>
+<p>You must get your Partnerize <code>camref</code> value for each Partnerize merchant.</p>
 
 <p>The <code>@@@</code> characters in the URL are replaced with the <code>camref</code> value.</p>
 
-<p>See the <a href="#get-performance-horizon-camref">Get Performance Horizon camref</a> section to learn how to get your Performance Horizon <code>camref</code> value to insert in your product URLs.</p>
+<p>See the <a href="#get-partnerize-camref">Get Partnerize camref</a> section to learn how to get your Partnerize <code>camref</code> value to insert in your product URLs.</p>
 <h1 id='usage-limits'>Usage Limits</h1>
 <p>The number of API Requests you are allowed to make per billing cycle is determined by your Datafeedr subscription plan.</p>
 
@@ -4440,10 +4440,10 @@ This request does require your <code>AWSSecretKey</code> which is used to sign t
 <td>The current version of the API.</td>
 </tr>
 </tbody></table>
-<h1 id='performance-horizon-camref'>Performance Horizon Camref</h1>
-<p>The <code>performancehorizon_campaigns</code> endpoint returns <a href="#performancehorizoncampaign-properties"><code>PerformanceHorizonCampaign</code></a> Objects which can be used to get your Performance Horizon <code>camref</code> value which is the value you will use as your Performance Horizon affiliate ID.</p>
+<h1 id='partnerize-camref'>Partnerize Camref</h1>
+<p>The <code>performancehorizon_campaigns</code> endpoint returns <a href="#performancehorizoncampaign-properties"><code>PerformanceHorizonCampaign</code></a> Objects which can be used to get your Partnerize <code>camref</code> value which is the value you will use as your Partnerize affiliate ID.</p>
 <h2 id='performancehorizoncampaign-properties'>PerformanceHorizonCampaign Properties</h2>
-<p>The <code>PerformanceHorizonCampaign</code> Object contains information about a Performance Horizon merchant.</p>
+<p>The <code>PerformanceHorizonCampaign</code> Object contains information about a Partnerize merchant.</p>
 
 <table><thead>
 <tr>
@@ -4455,12 +4455,12 @@ This request does require your <code>AWSSecretKey</code> which is used to sign t
 <tr>
 <td><code>camref</code></td>
 <td>string</td>
-<td>Performance Horizon Affiliate ID (Replace <code>@@@</code> with this value).</td>
+<td>Partnerize Affiliate ID (Replace <code>@@@</code> with this value).</td>
 </tr>
 <tr>
 <td><code>campaign_id</code></td>
 <td>string</td>
-<td>Performance Horizon Adspace ID.</td>
+<td>Partnerize Adspace ID.</td>
 </tr>
 <tr>
 <td><code>merchant_id</code></td>
@@ -4468,9 +4468,9 @@ This request does require your <code>AWSSecretKey</code> which is used to sign t
 <td>Datafeedr Merchant ID.</td>
 </tr>
 </tbody></table>
-<h2 id='get-performance-horizon-camref'>Get Performance Horizon camref</h2>
+<h2 id='get-partnerize-camref'>Get Partnerize camref</h2>
 <blockquote>
-<p>Performance Horizon Campaign Request</p>
+<p>Partnerize Campaign Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
   --url https://api.datafeedr.com/performancehorizon_campaigns <span class="se">\</span>
@@ -4572,7 +4572,7 @@ This request does require your <code>AWSSecretKey</code> which is used to sign t
 </span></code></pre>
 <p><code>POST https://api.datafeedr.com/performancehorizon_campaigns</code></p>
 
-<p>Get the <code>camref</code> values (ie. affiliate IDs) for specific Performance Horizon merchants.</p>
+<p>Get the <code>camref</code> values (ie. affiliate IDs) for specific Partnerize merchants.</p>
 <h3 id='request-properties'>Request Properties</h3>
 <table><thead>
 <tr>
@@ -4590,19 +4590,19 @@ This request does require your <code>AWSSecretKey</code> which is used to sign t
 </tr>
 <tr>
 <td><code>application_key</code></td>
-<td>Your <a href="https://datafeedrapi.helpscoutdocs.com/article/195-how-to-find-your-performance-horizon-publisher-id-and-api-keys">Performance Horizon Application Key</a>.</td>
+<td>Your <a href="https://datafeedrapi.helpscoutdocs.com/article/195-how-to-find-your-performance-horizon-publisher-id-and-api-keys">Partnerize Application Key</a>.</td>
 <td><code>string</code></td>
 <td>Yes</td>
 </tr>
 <tr>
 <td><code>user_api_key</code></td>
-<td>Your <a href="https://datafeedrapi.helpscoutdocs.com/article/195-how-to-find-your-performance-horizon-publisher-id-and-api-keys">Performance Horizon User API Key</a>.</td>
+<td>Your <a href="https://datafeedrapi.helpscoutdocs.com/article/195-how-to-find-your-performance-horizon-publisher-id-and-api-keys">Partnerize User API Key</a>.</td>
 <td><code>string</code></td>
 <td>Yes</td>
 </tr>
 <tr>
 <td><code>publisher_id</code></td>
-<td>Your <a href="https://datafeedrapi.helpscoutdocs.com/article/195-how-to-find-your-performance-horizon-publisher-id-and-api-keys">Performance Horizon Publisher ID</a>.</td>
+<td>Your <a href="https://datafeedrapi.helpscoutdocs.com/article/195-how-to-find-your-performance-horizon-publisher-id-and-api-keys">Partnerize Publisher ID</a>.</td>
 <td><code>string</code></td>
 <td>Yes</td>
 </tr>

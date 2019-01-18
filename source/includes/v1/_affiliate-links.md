@@ -46,15 +46,15 @@ See the [Get Zanox affiliate ID](#get-zanox-affiliate-id) section to learn how t
 
 
 
-## Performance Horizon Affiliate IDs
+## Partnerize Affiliate IDs
 
-Performance Horizon handles affiliate IDs differently than most other affiliate networks.
+Partnerize (formally Performance Horizon) handles affiliate IDs differently than most other affiliate networks.
 
 Instead of providing a static affiliate ID that can simply be inserted into your URLs, an affiliate ID must be dynamically generated.
 
-You must get your Performance Horizon `camref` value for each Performance Horizon merchant.
+You must get your Partnerize `camref` value for each Partnerize merchant.
 
 The `@@@` characters in the URL are replaced with the `camref` value.
 
-See the [Get Performance Horizon camref](#get-performance-horizon-camref) section to learn how to get your Performance Horizon `camref` value to insert in your product URLs.
+See the [Get Partnerize camref](#get-partnerize-camref) section to learn how to get your Partnerize `camref` value to insert in your product URLs.
 

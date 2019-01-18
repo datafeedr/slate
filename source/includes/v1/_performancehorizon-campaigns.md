@@ -1,25 +1,25 @@
-# Performance Horizon Camref
+# Partnerize Camref
 
-The `performancehorizon_campaigns` endpoint returns [`PerformanceHorizonCampaign`](#performancehorizoncampaign-properties) Objects which can be used to get your Performance Horizon `camref` value which is the value you will use as your Performance Horizon affiliate ID.
+The `performancehorizon_campaigns` endpoint returns [`PerformanceHorizonCampaign`](#performancehorizoncampaign-properties) Objects which can be used to get your Partnerize `camref` value which is the value you will use as your Partnerize affiliate ID.
 
 
 
 ## PerformanceHorizonCampaign Properties
 
-The `PerformanceHorizonCampaign` Object contains information about a Performance Horizon merchant.
+The `PerformanceHorizonCampaign` Object contains information about a Partnerize merchant.
 
 
 Property | Type | Description
 ---|---|---
-`camref` | string | Performance Horizon Affiliate ID (Replace `@@@` with this value).
-`campaign_id` | string | Performance Horizon Adspace ID.
+`camref` | string | Partnerize Affiliate ID (Replace `@@@` with this value).
+`campaign_id` | string | Partnerize Adspace ID.
 `merchant_id`  | integer | Datafeedr Merchant ID.
 
 
 
-## Get Performance Horizon camref
+## Get Partnerize camref
 
-> Performance Horizon Campaign Request
+> Partnerize Campaign Request
 
 ```shell
 curl --request POST \
@@ -134,7 +134,7 @@ axios.post(url, data).then(function (response) {
 
 `POST https://api.datafeedr.com/performancehorizon_campaigns`
 
-Get the `camref` values (ie. affiliate IDs) for specific Performance Horizon merchants.
+Get the `camref` values (ie. affiliate IDs) for specific Partnerize merchants.
 
 
 
@@ -144,9 +144,9 @@ Get the `camref` values (ie. affiliate IDs) for specific Performance Horizon mer
 Property | Value | Type | Required
 ---|---|---|---|---
 `merchant_ids` | Array of Datafeedr [`Merchant`](#merchant-properties) IDs. | `[12345, 13524,...]` | Yes
-`application_key` | Your [Performance Horizon Application Key](https://datafeedrapi.helpscoutdocs.com/article/195-how-to-find-your-performance-horizon-publisher-id-and-api-keys). | `string` | Yes
-`user_api_key` | Your [Performance Horizon User API Key](https://datafeedrapi.helpscoutdocs.com/article/195-how-to-find-your-performance-horizon-publisher-id-and-api-keys). | `string` | Yes
-`publisher_id` | Your [Performance Horizon Publisher ID](https://datafeedrapi.helpscoutdocs.com/article/195-how-to-find-your-performance-horizon-publisher-id-and-api-keys). | `string` | Yes
+`application_key` | Your [Partnerize Application Key](https://datafeedrapi.helpscoutdocs.com/article/195-how-to-find-your-performance-horizon-publisher-id-and-api-keys). | `string` | Yes
+`user_api_key` | Your [Partnerize User API Key](https://datafeedrapi.helpscoutdocs.com/article/195-how-to-find-your-performance-horizon-publisher-id-and-api-keys). | `string` | Yes
+`publisher_id` | Your [Partnerize Publisher ID](https://datafeedrapi.helpscoutdocs.com/article/195-how-to-find-your-performance-horizon-publisher-id-and-api-keys). | `string` | Yes
 
 
 

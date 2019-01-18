@@ -85,5 +85,5 @@ Code | Description
 2 | Access error.
 3 | Limit error.
 4 | Malformed query error.
-7 | External APIs (Performance Horizon, Zanox) error.
+7 | External APIs (Partnerize, Zanox) error.
 9 | Other error.

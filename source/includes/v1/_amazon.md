@@ -43,32 +43,38 @@ Property | Type | Description
 
 ```shell
 curl --request POST \
-  --url https://api.datafeedr.com/amazon_item_search \
+  --url https://api.datafeedr.com/amazon_find \
   --data '{
     "aid": "ACCESS_ID",
     "akey": "ACCESS_KEY",
-    "AssociateTag": "AMAZON_TRACKING_ID",
-    "AWSAccessKeyId": "AMAZON_ACCESS_KEY",
-    "AWSSecretKey": "AMAZON_SECRET_KEY",
-    "SearchIndex": "SportingGoods",
-    "Keywords": "osprey farpoint 55"
+    "amz_tag": "AMAZON_TRACKING_ID",
+    "amz_access": "AMAZON_ACCESS_KEY",
+    "amz_key": "AMAZON_SECRET_KEY",
+    "locale": "US",
+    "operation": "SearchItems",
+    "params": {
+        "keywords": "osprey farpoint 55"
+    }
 }'
 ```
 
 ```php
 <?php
 
-$url = "https://api.datafeedr.com/amazon_item_search";
+$url = "https://api.datafeedr.com/amazon_find";
 
-$data = json_encode( [
-    'aid'            => 'ACCESS_ID',
-    'akey'           => 'ACCESS_KEY',
-    'AssociateTag'   => 'AMAZON_TRACKING_ID',
-    'AWSAccessKeyId' => 'AMAZON_ACCESS_KEY',
-    'AWSSecretKey'   => 'AMAZON_SECRET_KEY',
-    'SearchIndex'    => 'SportingGoods',
-    'Keywords'       => 'osprey farpoint 55'
-] );
+$data = json_encode([
+    'aid'        => 'ACCESS_ID',
+    'akey'       => 'ACCESS_KEY',
+    'amz_tag'    => 'AMAZON_TRACKING_ID',
+    'amz_access' => 'AMAZON_ACCESS_KEY',
+    'amz_key'    => 'AMAZON_SECRET_KEY',
+    'locale'     => 'US',
+    'operation'  => 'SearchItems',
+    'params'     => [
+        "keywords" => "osprey farpoint 55"
+    ]
+]);
 
 $ch = curl_init($url);
 curl_setopt_array($ch, [
@@ -86,16 +92,19 @@ print_r(json_decode($response));
 ```python
 import requests
 
-url = "https://api.datafeedr.com/amazon_item_search"
+url = "https://api.datafeedr.com/amazon_find"
 
 data = {
     "aid": "ACCESS_ID",
     "akey": "ACCESS_KEY",
-    "AssociateTag": "AMAZON_TRACKING_ID",
-    "AWSAccessKeyId": "AMAZON_ACCESS_KEY",
-    "AWSSecretKey": "AMAZON_SECRET_KEY",
-    "SearchIndex": "SportingGoods",
-    "Keywords": "osprey farpoint 55"
+    "amz_tag": "AMAZON_TRACKING_ID",
+    "amz_access": "AMAZON_ACCESS_KEY",
+    "amz_key": "AMAZON_SECRET_KEY",
+    "locale": "US",
+    "operation": "SearchItems",
+    "params": {
+        "keywords": "osprey farpoint 55"
+    }
 }
 
 response = requests.post(url, json=data)
@@ -105,16 +114,19 @@ print(response.json())
 ```javascript
 var axios = require('axios');
 
-var url = "https://api.datafeedr.com/amazon_item_search";
+var url = "https://api.datafeedr.com/amazon_find";
 
 var data = {
-    "aid": "ACCESS_ID",
-    "akey": "ACCESS_KEY",
-    "AssociateTag": "AMAZON_TRACKING_ID",
-    "AWSAccessKeyId": "AMAZON_ACCESS_KEY",
-    "AWSSecretKey": "AMAZON_SECRET_KEY",
-    "SearchIndex": "SportingGoods",
-    "Keywords": "osprey farpoint 55"
+  "aid": "ACCESS_ID",
+  "akey": "ACCESS_KEY",
+  "amz_tag": "AMAZON_TRACKING_ID",
+  "amz_access": "AMAZON_ACCESS_KEY",
+  "amz_key": "AMAZON_SECRET_KEY",
+  "locale": "US",
+  "operation": "SearchItems",
+  "params": {
+    "keywords": "osprey farpoint 55"
+  }
 };
 
 axios.post(url, data).then(function (response) {

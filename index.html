@@ -3842,29 +3842,35 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 <p>Example Amazon Product Search Request</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://api.datafeedr.com/amazon_item_search <span class="se">\</span>
+  --url https://api.datafeedr.com/amazon_find <span class="se">\</span>
   --data <span class="s1">'{
     "aid": "ACCESS_ID",
     "akey": "ACCESS_KEY",
-    "AssociateTag": "AMAZON_TRACKING_ID",
-    "AWSAccessKeyId": "AMAZON_ACCESS_KEY",
-    "AWSSecretKey": "AMAZON_SECRET_KEY",
-    "SearchIndex": "SportingGoods",
-    "Keywords": "osprey farpoint 55"
+    "amz_tag": "AMAZON_TRACKING_ID",
+    "amz_access": "AMAZON_ACCESS_KEY",
+    "amz_key": "AMAZON_SECRET_KEY",
+    "locale": "US",
+    "operation": "SearchItems",
+    "params": {
+        "keywords": "osprey farpoint 55"
+    }
 }'</span>
 </code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/amazon_item_search"</span><span class="p">;</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/amazon_find"</span><span class="p">;</span>
 
-<span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span> <span class="p">[</span>
-    <span class="s1">'aid'</span>            <span class="o">=&gt;</span> <span class="s1">'ACCESS_ID'</span><span class="p">,</span>
-    <span class="s1">'akey'</span>           <span class="o">=&gt;</span> <span class="s1">'ACCESS_KEY'</span><span class="p">,</span>
-    <span class="s1">'AssociateTag'</span>   <span class="o">=&gt;</span> <span class="s1">'AMAZON_TRACKING_ID'</span><span class="p">,</span>
-    <span class="s1">'AWSAccessKeyId'</span> <span class="o">=&gt;</span> <span class="s1">'AMAZON_ACCESS_KEY'</span><span class="p">,</span>
-    <span class="s1">'AWSSecretKey'</span>   <span class="o">=&gt;</span> <span class="s1">'AMAZON_SECRET_KEY'</span><span class="p">,</span>
-    <span class="s1">'SearchIndex'</span>    <span class="o">=&gt;</span> <span class="s1">'SportingGoods'</span><span class="p">,</span>
-    <span class="s1">'Keywords'</span>       <span class="o">=&gt;</span> <span class="s1">'osprey farpoint 55'</span>
-<span class="p">]</span> <span class="p">);</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">([</span>
+    <span class="s1">'aid'</span>        <span class="o">=&gt;</span> <span class="s1">'ACCESS_ID'</span><span class="p">,</span>
+    <span class="s1">'akey'</span>       <span class="o">=&gt;</span> <span class="s1">'ACCESS_KEY'</span><span class="p">,</span>
+    <span class="s1">'amz_tag'</span>    <span class="o">=&gt;</span> <span class="s1">'AMAZON_TRACKING_ID'</span><span class="p">,</span>
+    <span class="s1">'amz_access'</span> <span class="o">=&gt;</span> <span class="s1">'AMAZON_ACCESS_KEY'</span><span class="p">,</span>
+    <span class="s1">'amz_key'</span>    <span class="o">=&gt;</span> <span class="s1">'AMAZON_SECRET_KEY'</span><span class="p">,</span>
+    <span class="s1">'locale'</span>     <span class="o">=&gt;</span> <span class="s1">'US'</span><span class="p">,</span>
+    <span class="s1">'operation'</span>  <span class="o">=&gt;</span> <span class="s1">'SearchItems'</span><span class="p">,</span>
+    <span class="s1">'params'</span>     <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s2">"keywords"</span> <span class="o">=&gt;</span> <span class="s2">"osprey farpoint 55"</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
 
 <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
 <span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="p">[</span>
@@ -3879,32 +3885,38 @@ You must insert your affiliate ID into the URL to get credit for any referrals.
 <span class="nb">print_r</span><span class="p">(</span><span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="p">));</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.datafeedr.com/amazon_item_search"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.datafeedr.com/amazon_find"</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">"aid"</span><span class="p">:</span> <span class="s">"ACCESS_ID"</span><span class="p">,</span>
     <span class="s">"akey"</span><span class="p">:</span> <span class="s">"ACCESS_KEY"</span><span class="p">,</span>
-    <span class="s">"AssociateTag"</span><span class="p">:</span> <span class="s">"AMAZON_TRACKING_ID"</span><span class="p">,</span>
-    <span class="s">"AWSAccessKeyId"</span><span class="p">:</span> <span class="s">"AMAZON_ACCESS_KEY"</span><span class="p">,</span>
-    <span class="s">"AWSSecretKey"</span><span class="p">:</span> <span class="s">"AMAZON_SECRET_KEY"</span><span class="p">,</span>
-    <span class="s">"SearchIndex"</span><span class="p">:</span> <span class="s">"SportingGoods"</span><span class="p">,</span>
-    <span class="s">"Keywords"</span><span class="p">:</span> <span class="s">"osprey farpoint 55"</span>
+    <span class="s">"amz_tag"</span><span class="p">:</span> <span class="s">"AMAZON_TRACKING_ID"</span><span class="p">,</span>
+    <span class="s">"amz_access"</span><span class="p">:</span> <span class="s">"AMAZON_ACCESS_KEY"</span><span class="p">,</span>
+    <span class="s">"amz_key"</span><span class="p">:</span> <span class="s">"AMAZON_SECRET_KEY"</span><span class="p">,</span>
+    <span class="s">"locale"</span><span class="p">:</span> <span class="s">"US"</span><span class="p">,</span>
+    <span class="s">"operation"</span><span class="p">:</span> <span class="s">"SearchItems"</span><span class="p">,</span>
+    <span class="s">"params"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"keywords"</span><span class="p">:</span> <span class="s">"osprey farpoint 55"</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'axios'</span><span class="p">);</span>
 
-<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/amazon_item_search"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://api.datafeedr.com/amazon_find"</span><span class="p">;</span>
 
 <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"aid"</span><span class="p">:</span> <span class="s2">"ACCESS_ID"</span><span class="p">,</span>
-    <span class="s2">"akey"</span><span class="p">:</span> <span class="s2">"ACCESS_KEY"</span><span class="p">,</span>
-    <span class="s2">"AssociateTag"</span><span class="p">:</span> <span class="s2">"AMAZON_TRACKING_ID"</span><span class="p">,</span>
-    <span class="s2">"AWSAccessKeyId"</span><span class="p">:</span> <span class="s2">"AMAZON_ACCESS_KEY"</span><span class="p">,</span>
-    <span class="s2">"AWSSecretKey"</span><span class="p">:</span> <span class="s2">"AMAZON_SECRET_KEY"</span><span class="p">,</span>
-    <span class="s2">"SearchIndex"</span><span class="p">:</span> <span class="s2">"SportingGoods"</span><span class="p">,</span>
-    <span class="s2">"Keywords"</span><span class="p">:</span> <span class="s2">"osprey farpoint 55"</span>
+  <span class="s2">"aid"</span><span class="p">:</span> <span class="s2">"ACCESS_ID"</span><span class="p">,</span>
+  <span class="s2">"akey"</span><span class="p">:</span> <span class="s2">"ACCESS_KEY"</span><span class="p">,</span>
+  <span class="s2">"amz_tag"</span><span class="p">:</span> <span class="s2">"AMAZON_TRACKING_ID"</span><span class="p">,</span>
+  <span class="s2">"amz_access"</span><span class="p">:</span> <span class="s2">"AMAZON_ACCESS_KEY"</span><span class="p">,</span>
+  <span class="s2">"amz_key"</span><span class="p">:</span> <span class="s2">"AMAZON_SECRET_KEY"</span><span class="p">,</span>
+  <span class="s2">"locale"</span><span class="p">:</span> <span class="s2">"US"</span><span class="p">,</span>
+  <span class="s2">"operation"</span><span class="p">:</span> <span class="s2">"SearchItems"</span><span class="p">,</span>
+  <span class="s2">"params"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"keywords"</span><span class="p">:</span> <span class="s2">"osprey farpoint 55"</span>
+  <span class="p">}</span>
 <span class="p">};</span>
 
 <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
